@@ -1,0 +1,48 @@
+CONECTAR A DB
+Antes de hacer el archivo de conexion a la base de datos lo primero es elegir la dependencia que usaremos
+Con Express podemos trabajar con mongodb MySql que son las base de datos mas utilizadas siendo mongodb la de mas uso
+en stacks que trabajan con nodeJS
+Mostraremos la fomra de hacerlo con mongoDb y Mysql
+
+========================================================================================================================
+CONEXION CON MONGO DB
+Para trabajar con mongoDb instalaremos la dependencia de mongoose con el sig comando
+	npm i mongoose
+Ya instalada la dependencia Para nuestro ejemplo crearemos en la carpeta config un archivo con el sig nombre mongo.js 
+este nombre es representativo para entender que estamos trabajando con mongoDB 
+el archivo puede ser nombrado bajo cualquier nombre que se quiera
+
+En el archivo que creamos hacemos la conexion a nuestra base de datos
+
+const mongoose = require('mongoose');	//se incluye en una constante la dependencia de mongoose
+
+//guardamos en una constante la conexion a nuestra db
+const dbConnect = () => {
+    const DB_URL = process.env.DB_URL;
+    mongoose.connect('mongodb://127.0.0.1:27017/nameDB',{
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(db=> console.log('DB conexion exitosa'))
+    .catch(err=>console.error(err));
+}
+
+module.exports = dbConnect;   //exportamos el modulo de nuestra conexion para su uso
+
+
+USANDO EsModule
+import mongoose from 'mongoose';
+
+=============================================================================================================================
+INCLUIRLO EN EL INDEX.JS
+despues de haber creado el archivo para usarlo sera necesario agregar en el index.js lo sig.
+
+const app = require('./server');
+const dbConnect = require('./config/mongo');	//incluimos el archivo de nuestra db
+
+//server escuchando
+app.listen(app.get('port'), ()=>{
+    console.log('Servidor activo en puerto: http://localhost:',app.get('port'), 'biatch', );
+});
+
+dbConnect();     //instanciamos nuestra conexion

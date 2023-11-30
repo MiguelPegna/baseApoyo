@@ -1,0 +1,19 @@
+EXPRESSJS: Es el framework backend más popular para Node.js, y es una parte extensa del ecosistema JavaScript.
+Diseñado para construir aplicaciones web de una sola página, multipágina e híbridas, 
+también se ha convertido en el estándar para desarrollar aplicaciones backend con Node.js, 
+y es la parte backend de algo conocido como stack MERN o MEVN
+
+M - MongoDb como standar de base de datos siendo MongoDb del tipo noSql
+E - ExpressJs como framework para backend
+R - Reacrt biblioteca más popular de uso para el desarrollo de frontend
+N - Node para usar JS como lenguaje de programacion para el lado del servidor
+
+M - MongoDb como standar de base de datos siendo MongoDb del tipo noSql
+E - ExpressJs como framework para backend
+V - VueJs se puede usar como framework pero para el frontend
+N - Node para usar JS como lenguaje de programacion para el lado del servidor
+
+Antes de seguir debemos comprender lo sig.
+Express es un framework que permite una personalizacion muy extensa al dejarnos instalar las dependencias que nosotros
+necesitamos, debido a esto podemos encontrar proyectos en este Framework totalmente distintos uno del otro debido a las 
+dependencias que se instalen segun las necesidades del proyecto. 

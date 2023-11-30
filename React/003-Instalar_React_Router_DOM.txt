@@ -1,0 +1,59 @@
+INSTALAMOS LA LIBRERIA DE REACT ROUTER DOM
+
+React Router DOM: Es una libreria de routing que facilitara el uso de rutas y la autentificacion
+
+Para instalar En una terminal en nuestro proyecto de react escribimos el sig comando
+	npm i react-router-dom
+
+en la carpeta src creamos un archivo con el nombre router.jsx
+escribimos lo sig
+
+import { createBrowserRouter } from 'react-router-dom';
+import Layout from './layouts/Layout';                  //Este es un componenete, cada que queramos usar un componente hay que importarlo
+const router = createBrowserRouter([
+   	//tus rutas aqui merengues
+	{
+		path: '/',			//ruta principal
+		element: <Layout />,		//indicamos el componenete que queremos que cargue cuando se visita esta pag
+		children: [                     //hace referencia a los hijos que usaran ese componente al ser cargados
+            		{
+                		index: true,    //True, indica que esa sera la pagina principal
+                		element: <Inicio />
+            		}
+        	]
+	}
+]);
+
+export default router;
+
+En src creamos una carpeta con el nombre de layouts
+dentro de esa carpeta creamos el sig archivos
+Layout.jsx respetando las mayusculas y colocamos el sig codigo
+
+import { Outlet } from 'react-router-dom';
+export default function Layout(){
+    return (
+        <>
+          <div className="text-6xl">
+            Hola a todos
+	    <Outlet />
+          </div>
+        </>
+    )
+}
+
+IMPORTANTE
+en el archivo main.jsx de la carpeta src escribimos lo sig
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { RouterProvider } from 'react-router-dom'
+import router from './router'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>,
+)
+
+Con esto asignamos cual va a ser el componmente principal de nuestra app

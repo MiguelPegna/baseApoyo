@@ -1,0 +1,39 @@
+SINTAXIS DE BLADE
+El equivalente a los echo de php en blade es la sig
+{{ $imprime }}
+
+COMENTARIOS
+{{--Comentario--}}
+
+ESTRUCTURAS
+IF-BLADE
+@if ($titulo == 'Pancho')
+ el titulo si es: {{$titulo}}
+@elseif ($titulo != 'Naco')
+ {{$titulo}} es un titulo es clasista
+@else
+ el titulo no es: {{$titulo}}
+@endif
+
+FOR-BLADE
+@for ($i=1; $i>=10; $i++)
+ El numero es {{$i}}
+@endfor
+
+WHILE-BLADE
+<?php $num=1; ?>
+@while ($num <20)
+ @if($num %2==0)
+  numeros par son {{$num}}
+ @endif
+ <?php $num+++; ?>
+@endwhile
+
+FOREACH-BLADE
+@foreach ($peliculas as $pelicula)
+ las peliculas son: {{$pelicula}}
+@endforeach
+
+
+INCLUDES-BLADE
+@include('carpeta.vista')

@@ -1,0 +1,29 @@
+REACT HOOKS
+REact cuenta con una API sencilla que permite creare todo tipo de aplicaciones´por medio de los hooks
+
+HOOKS BASICOS
+useState:
+useEffect
+useContext
+
+HOOKS ADICIONALES
+useReducer
+useCallback
+useMemo
+useRef
+useImperativeHandle
+useLayoutEffect
+useDebugValue
+
+CREAR HOOK
+Tambien es posible crear hooks personalizados
+
+Para usarlos se importan de la siguiente manera
+import { useEffect, useState} from 'react';
+
+	const [varible, modificadorVariable] = useState('ValInicial');
+	const [nombre, setNombre] = useState('Paquita Cabeza');
+
+REGLAS PARA HOOKS
+Hooks se colocan en la parte superior de los componentes
+No se colocan dentro de condicionales ni despues del return

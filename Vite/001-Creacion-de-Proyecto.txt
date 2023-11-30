@@ -1,0 +1,100 @@
+CREAR UN PROYECTO REACT USANDO VITE
+En la carpeta donde realizaremos nuestro proyecto ejecutamos el siguiente código
+	npm init vite@latest
+Esto ejecuta la ultima versión de vite
+Despues de haber ejecutado este comando en nuestra consola se nos guiara como deseamos configurar nuestro proyecto por medio de las sig preguntas:
+	pregunta 			respuesta
+ create-vite@4.4.1  		y
+ Project name:          nomApp
+ Select a framework     React    //en este caso
+ Lenguaje               JavaScript  //en este caso
+
+Despues de estas configuraciones debemos movernos al directorio de nuestro proyecto
+	cd nomApp
+
+Posteriormente ejecutamos el sig comando
+	npm install
+Esto instala dependecias de configuracion de nuestro proyecto
+
+Y para ejecutar el servidor lo hacemos con el sig comando
+	npm run dev
+Esto nos da una url donde podremos visualizar nuestro proyecto
+
+Lo siguiente es limpiar nuestro entorno de trabajo ya que la instalacion de react por medio de vite
+genera archivos que no usaremos
+Por tanto eliminaremos los siguientes archivos
+app.css
+y la carpeta assets
+
+y depuramos el main de la sig manera
+
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    {/* Aqui se coloca el contenido de la app*/}
+  </React.StrictMode>,
+)
+
+Ahora ya esta limpia de instalacion de react para enfocrnos en el desarrollo
+
+INSTALAR Y CONFIGURAR TAILWIND PARA SU USO EN REACT
+
+Dentro de la carpeta de nuestro proyecto de react abrimos una consola y escribimos el sig comando
+	npm install -D tailwindcss postcss autoprefixer
+
+- Despues ejecutamos el sig comando
+	npx tailwindcss init -p
+
+Esto crea dos archivos postcss.config.js y tailwind.config.js
+
+abrimos el tailwind.config.js y dentro de los corchetes de content escribimos lo sig
+	'./index.html',
+	'./src/**/*.{js,jsx}'
+
+en la carpeta src abrimos el archivo index.css
+borramos todo el codigo o lo comentamos
+y depues escribimos lo sig.
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+Con esto ya podremos usar los estilos de tailwind en el diseño de nuestro proyecto
+
+Siguiente crear en src una carpeta con el nombre de components
+
+llamado sencillo a API
+
+import { useState, useEffect } from "react";
+const url = "https://spapi.dev/api/characters"
+const Api = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetch(url)
+        .then(response => response.json())
+        .then((responseData) =>{
+            setData(responseData.data)
+        })
+        .catch((error) => {
+            console.log('Error al obtener la info de la api', error);
+        });
+    }, []);
+
+    return(
+        <>
+            {
+                data.map(item => (
+                    <div key = { item.id }>
+                        { item.name }
+                    </div>
+                ))
+            }
+            hola
+        </>
+    )
+}
+
+export default Api;

@@ -1,0 +1,20 @@
+MANUAL PARA CREAR SERVIDOR WEB CON EXPRESSJS
+
+
+
+
+
+
+CREACION Y DISTRIBUCUION DE CARPETAS
+
+
+correr servidor: Dentro de la carpeta principal de nuestro proyecto ejecutamos el sig comando
+	node src/index.js
+
+
+Para conectar con mongodb hay que inicializar mongo db en nuestra pc
+en la carpeta de archivos de programa buscar mongodb/server/5.0/bin
+
+C:\Program Files\MongoDB\Server\5.0\bin
+Dentro de la carpeta ejecutamos el mongod.exe
+y listo se habra inicializado mongo db

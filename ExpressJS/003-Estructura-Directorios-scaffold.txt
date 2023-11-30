@@ -1,0 +1,28 @@
+ESTRUCTURA DE DIECTORIOS
+ExpressJs es un framework que generalemente se usa bajo el patrón de diseño MVC
+por lo cual es necesario crear una estructura de directorios que nos permita trabajar con este patron de diseño
+
+Podemos crear la distribucion de las carpetas de nuestro proyecto de la sig manera recordando que esta es una forma y se pueden encontrar proyectos con una distribucion totalmente diferente a esta.
+La distribucion que se usara en este manual esta pensada en hacer uso en el patron de diseño MVC
+
+Creamos una carpeta con el nombre de src donde se contendra toda la funcionalidad de nuestro proyecto
+
+Dentro de la carpeta src creamos las sig carpetas:
+	config:		archivos de configuracion como conexion a db por ejemplo
+	controllers:	Carpeta que contendra los controladores que son los archivos que trabajaran el back de nuestra aplicacion
+	helpers:	colocar funciones auxiliares (es opcional)
+	models:		Crearemos los modelos de la app estos sirven para el llamado de info de la db
+	public:		insertar archivos estaticos de la app img, iconos, scripts, css etc
+	storage:	Carpeta donde se contendran los archivos que se suban al servidor por parte del cliente avatars, documentos, etc
+	routes:		crearemos las rutas url de la aplicacion carpeta que puede ocupar el lugar de views cuando nuestro proyecto es una API
+	views:		colocaremos todas las vistas que se mostraran del lado del cliente
+
+
+	index.js 	que sera el archivo que correra nuestro servidor archivo principal de la app
+	database.js 	contendra la conexion a la db puede estar suelto o dentro de la carpeta config
+	server.js	contendra la configuracion de nuestro servidor
+
+Podemos usar consola para hacerlo de la sig manera
+	mkdir config controllers helpers models public storage routes views
+	touch index.js databse.js server.js
+

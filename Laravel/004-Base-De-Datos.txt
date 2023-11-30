@@ -1,0 +1,93 @@
+BASE DE DATOS EN LARAVEL
+Laravel por defecto trabaja con mysql
+Para definir la DB con la que vamos a trabajar podemos hacerlo desde la carpeta config y en
+archivo database.php
+Se puede configurar la conexion desde ese archivo pero no es lo recomnedable ya que
+laravel tiene un archivo
+de variables globales donde podemos definir los permisos y la base de datos 
+ese archivo se llama .env
+
+Anteriormente se menciono la carpeta database y que en ella se trabaja todo lo relacionado a la gestion de la DB
+Dentro de esta carpeta se encuentran 3 carpetas
+	factories
+	migrations
+	seeders
+Siendo migrations la carpeta en la que mas estaremos trabajando
+
+CREAR TABLAS DESDE LARAVEL
+En la carpeta database hay una carpeta con el nombre migrations en el primer archivo
+Se crean las talbas
+public function up()
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();    				//int unsigned increment
+            $table->string('name'); 			//varchar
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();  //
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();   //crete at update_at
+        });
+    }
+
+Para hacer migraciones se usa el sig comando
+php artisan migrate
+CREAR MIGRACIONES
+Para cada tabla de nuestro proyecto necesitamos crear un migracion
+
+php artisan make:migration create_cursos_table
+ Schema::create('cursos', function (Blueprint $table) {
+            $table->id();    //int unsigned increment
+            $table->string('name'); //varchar
+            $table->text('descripcion');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();   //crete at update_at
+        });
+
+BORRAR TABLA
+Dentro de la migracion en el metodo de down() agregamos lo sig
+public function down()
+    {
+        Schema::dropIfExists('cursos');
+    }
+
+REGRESAR A UN ESTADO ANTERIOR DE LAS TABLAS
+php artisian migrate:rollback  //borra el untimo lote de migracion
+
+ACTUALIZAR CAMBIOS EN TABLAS
+php artisian migrate:fresh  //Solo se recomienda en el proceso de constrciion de la DB no cuando ya ha almacenado datos
+
+ACTUALIZAR CAMBIOS EN TABLAS SIN BORRAR INFO
+php artisian make:migration add_nomColum_to_nomTable_table  
+esto crea en el metodo lo sig
+Schema::table('cursos', function (Blueprint $table) {
+            $table->id();    //int unsigned increment
+            $table->string('name'); //varchar
+            $table->text('descripcion');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();   //crete at update_at
+        });
+
+BORRAR COLUMNA
+public function down()
+    {
+        Schema::table('cursos', function (Blueprint $table){
+		$table->dropColumn()
+	});
+    }
+
+Hacer migraciones
+php artisan migrate
+
+deshacer la ultima migracion
+php artisan migrate:rollback
+
+crear archivo para crear tabla
+php artisan make:migration create_nomTable_table
+
+borrar todas las tablas de la db
+php artisan migrate:reset

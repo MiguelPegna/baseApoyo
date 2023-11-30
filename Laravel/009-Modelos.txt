@@ -1,0 +1,42 @@
+MODELOS
+para crear un modelo usamos el comando
+php artisan make:model NomModel  el nombre del modelo se utiliza el singular del nombre de alguna tabla de nuestra DB
+ejem
+php artisan make:model User
+
+USAR TINKER
+Tinker permite interactuar con toda la pp de laravel en la linea de comando
+incluido el orm de eloquentm trabajos, eventos y mas
+para poder entrar al entorno de tinker ejecutamos el sig comando
+php artisan tinker
+
+pára salir del entorno tinker solo escribimos exit
+Para crear un objeto de la clase del modelo usamos el sig comando
+
+use App\Models\User;
+$user = new User;
+$user->NomCol ='Valor';
+ejem:
+$user->name = 'Filomeno';
+$user->lastname = 'Perez';
+$user->email = 'mail@gmail.com';
+Para obtener el objeto solo escribimos el nombre de la variable que asignamos al objeto
+$user
+Para guardar el objeto ya en la tabla de la DB escribimos el sig comando
+$user->save();
+
+Esto lo podemos usar en el archivo DatabaseSeeder.php
+
+Comando para ejecutar seders
+php artisan db:seed
+
+CREAR SEEDER
+php artisan make:seeder UserSeeder
+EJECUTAR EL SEEDER QUE CREAMOS
+En el archivo DatabaseSeeder.php en la funcion run escribimos los sig
+$this->call(UserSeeder::class);
+
+CREAR FACTORY
+php artisan make:factory UserFactory --modelUser
+En la clase definition en el return agregamos los campos de la tabla
+

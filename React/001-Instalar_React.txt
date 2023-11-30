@@ -1,0 +1,38 @@
+INSTALACIÓN DE LA LIBRERÍA REACT CON VITE
+- en nuestro proyecto en consola escribimos uno de los sig
+	npm create vite@latest
+	npm init vite@latest
+
+vite es una forma moderna en la cual podemos crear proyectos tanto en react, vueJs y type script
+- despues presionamos Y
+- despues de esto nos preguntara el nombre que queremos darle a nuestro proyecto react
+ponemos el nombre que mejor nos parezca
+- Despues de ponerle nombre a nuestro proyecto nos preguntara si deseamos que sea un proyecto
+Vanilla, VUE, REACT y otras opciones
+a nosotros nos interesa react asi que lo seleccionamos y le damos enter
+- Despues nos  preguntara si deseamos usar type script o javascript
+elejimos el que nos convenga en este caso sera JS
+
+- Despues de esto nos indica los pasos que debemos hacer para realizar la instalacion de dependencias en nuestro proyecto
+nos pasamos al directorio del proyecto que creamos escribiendo lo sig
+	cd nomProyecto
+
+despues ejecutamos el sig comando para instalar las dependecias de react
+  	npm install
+
+despues de instalar las dependencias ejecutamos el sig comando
+ 	npm run dev
+
+esto nos dara una dirección url que tendremos que poner en nuestro navegador para visualizarlo
+es importante dejar la ventana de nuestra terminal abierta ya que es la que esta ejecutando el proyecto
+
+De esta manera se instala react en nuestro proyecto
+
+La instalcion que se nos deja con archivos que estan de mas y no seran de utilidad por lo tanto podemos eliminarlos y esos archivos
+son los siguientes
+
+
+
+ PROPS: son propiedades o argumentos que se pasan entre componentes de react
+ CONTEXTAPI: permite manejar el estado global de la app sin dependencias
+ HOOK: al usar la nomenclatura de use a un hook lo integra a react y le hace mejoras

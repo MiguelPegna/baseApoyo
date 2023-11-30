@@ -1,0 +1,22 @@
+INSTALAR Y CONFIGURAR TAILWIND PARA SU USO EN REACT
+
+Dentro de la carpeta de nuestro proyecto de react abrimos una consola y escribimos el sig comando
+	npm install -D tailwindcss postcss autoprefixer
+
+- Despues ejecutamos el sig comando
+	npx tailwindcss init -p
+
+Esto crea dos archivos postcss.config.js y tailwind.config.js
+
+abrimos el tailwind.config.js y dentro de los corchetes de content escribimos lo sig
+	'./index.html',
+	'./src/**/*.{js,jsx}'
+
+en la carpeta src abrimos el archivo index.css
+borramos todo el codigo o lo comentamos
+y depues escribimos lo sig.
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+Con esto ya podremos usar los estilos de tailwind en el diseño de nuestro proyecto

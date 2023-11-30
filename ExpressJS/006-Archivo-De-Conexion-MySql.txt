@@ -1,0 +1,58 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUwMWU5MDEzMjMyNmNkMDBhZmE3MmUiLCJyb2xlIjpbInVzZXIiXSwiaWF0IjoxNjkyNDA5NDg4LCJleHAiOjE2OTI0MTY2ODh9.Lgbubu4Lt_Q0Ttjzj8M0dScNDXgtGULTE6-gJQ-wKdM
+
+
+CONECTAR A DB MYSQL
+Para usar MySql podemos instalar la dependencia de mysql2 con el sig comando
+	npm i mysql
+
+========================================================================================================================
+CONEXION CON MYSQL
+Ya instalada la dependencia Para nuestro ejemplo crearemos en la carpeta config un archivo con el sig nombre mysql.js 
+este nombre es representativo para entender que estamos trabajando con mysql 
+el archivo puede ser nombrado bajo cualquier nombre que se quiera
+
+En el archivo que creamos hacemos la conexion a nuestra base de datos
+
+const mongoose = require('mongoose');	//se incluye en una constante la dependencia de mongoose
+
+//guardamos en una constante la conexion a nuestra db
+import {createPool} from 'mysql2/promise';
+
+export const poolDB = createPool({
+    host:'localhost',
+    user:'root',
+    password:'',
+    port:'3306',
+    database:'nameDB'
+});
+
+============================================================================================================================
+CONEXION CON SEQUELIZE
+const {Sequelize} = require('sequelize');
+const DB_NAME = process.env.DB_NAME;
+const DB_HOST = process.env.DB_HOST;
+const DB_USER = process.env.DB_USER;
+const DB_PASS = process.env.DB_PASS;
+
+const DB_Mysql = {}
+
+DB_Mysql.mysqlCon = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
+    host: DB_HOST,
+    dialect: 'mysql',
+});
+
+module.exports = DB_Mysql;
+
+=============================================================================================================================
+INCLUIRLO EN EL INDEX.JS
+despues de haber creado el archivo para usarlo sera necesario agregar en el index.js lo sig.
+
+const app = require('./server');
+const dbConnect = require('./config/mysql');	//incluimos el archivo de nuestra db
+
+//server escuchando
+app.listen(app.get('port'), ()=>{
+    console.log('Servidor activo en puerto: http://localhost:',app.get('port'), 'biatch', );
+});
+
+dbConnect();     //instanciamos nuestra conexion

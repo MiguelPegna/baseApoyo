@@ -1,0 +1,48 @@
+VISTAS
+Las vistas son la interfaz que el usuario visualizara en el navegador
+Estas las crearemos en la siguiente ruta
+resources/views
+Creamos una carpeta con el nombre del contralador para este ejemplo usaremos el de cursos
+creamos una carpeta con el nombre cursos
+dentro de la carpeta cursos creamos 3 archivos una para cada metodo en este ejemplo definimos 3
+metodo el index, create y show entonces creartemos un archivo index.php otro create.php y el de show.php
+En el caso especifico del archivo show.php que recibe una variable por metodo get se debe hacer lo siguiente para poder usar esa variable
+REcordar que definimos este metodo en el controlador cursos de la sig manera
+    public function show($id){   //Show Elemento en particular
+        return view('cursos.perfil', 'varNomGet=> $id');   //se hace de esta manera para poder enviar el valor de la variable a nuestra vista
+    }
+Para visualizar la informacion de la vaeriiabe en la vista se hace lo siguiente en el archivo show.php
+<h1> El id del usuario es el siguiente: <?php echo $varNomGet; ?> </h1>
+
+SISTEMA DE PLANTILLAS BLADE
+Algo comun en el desarrolo de aplicaciones es notar que muchas de nuestras vistas pueden compartir muchos elementos como por ejemplo
+header, footer, estilos o incluso scripts ponerlos en cada view sería inconveniente si requerimos hacer un cambio que se refleje en todas las vistas
+
+Dentro de la carpeta views crearemos otra con el nombre de layouts
+dentro de la carpeta plantilla creamos nuestras plantillas ejemplo
+header.blade.php  // es importante que lleve el .blade para poder usar la plantilla
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title')</title>
+</head>
+<body>
+    @yield('content)
+</body>
+</html>
+
+Ya hecha nuestra plantilla para que se herede a una vista sera dnecesario convertir nuestras  vista a blade
+ejemplo nuestra pagina home.php la renombremos a home.blade.php y asi lo hacemos con cada vista que queramos que herede o use una plantilla
+Ya convertida nuestro home.php a home.blade.php
+para que se cargue el contenido heredado dentro de home.blade.php colocamos lo sig
+
+@extends('layouts.header')
+@section('title', 'Pagina Principal')
+@section('content') o @section('content'. $variable)
+	<h1>Contenido html</h1> {{$variable}}
+@endsection
+Para trabajar con blade se recomienda usar la extension laravel blade snippets para facilitar la creación de codigo

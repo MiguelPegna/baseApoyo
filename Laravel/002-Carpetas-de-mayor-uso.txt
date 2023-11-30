@@ -1,0 +1,62 @@
+Como se ha comentado Laravel nos crea un entorno de trabajo basado en MVC Modelo Vista Controlador
+por ello es necesario saber la distribucion de las carpetas y saber como sera su
+funcionalidad en el proyecto
+Hablaremos de las carpeta en las que mayormente estaremos trabajando.
+
+NOTA: En esta sección solo se dara un leve de definicion de lo que se encuentra en las carpetas de mayor uso, conforme se adentre
+	 en los respecivos elementos y su función se daran mejores ejemplos de su funcionalidad y uso
+
+- Carpeta app: Es la que contendra la logica de nuestra aplicación en pocas palabras los archivos del backenend dentro de
+		esta carpeta se encuentran otras carpetas en las que estaremos trabajando y desarrollando los controladores,
+		modelos, request, middleware
+
+	CARPETAS DE MAYOR USO EN LARAVEL
+CARPETA APP y HTTP
+Dentro de app hay una carpeta con el nombre de Http en esta carpeta es donde se encuentran las carpetas de los controladores
+modelos, request y middlesware
+>Controllers: En esta carpeta crearemos nuestros controladores, en ellos se define el comportamiento de la informacion en nuestra app
+>Request: Aqui se generan archivos Request que son intermediarios o filtros para recibir datos mayormente se usan para validar informacion de 
+	formularios. El request los valida antes de pasarlos al controlador esto sirve para tener un codigo mas breve y no tener 
+	saturados nuestros controladores
+>Middleware: Aqui van los Middleware que son archivos que funjen como guardias al acceso de ciertas partes de nuestra aplicacion
+
+CARPETA MODELS: 
+En esta carpeta van los modelos de la aplicación si el controllador define la forma en que se presenta y que se puede hacer 
+con la información el Modelo consulta la información de la DB y se la pasa al controlador para que este cumpla con la peticion
+que se solicita
+
+CARPETA CONFIG
+En esta se encuentra las configuraciones que permiten que nuestra aplicacion de laravel funcione no es muy comun meter mano a
+estos archivos a menos que tengas un conocimiento muy amplio en como funciona la estructura de laravel pero como se menciona 
+seran exepciones muy escasas cuando se tendra que meter mano aqui, ya que laravel desde se instalación esta énsado ára trabajar
+a la perfección en cualquier proyecto.
+El app.php es el archivo al que mas modificaras en esta carpeta ya que en este se encuetran ciertas configuraciones para de nuestra
+aplicacion en especial el lenguaje por defecto y la zona horaria
+'locale' => 'es',  para lenguaje
+'timezone' => 'America/Mexico_City',    para zona horaria
+
+
+CARPETA DATABASE
+En esta carpeta se generan los archivos que trabajaran con nuestra base de datos, como crear tablas, modificarlas, eliminarlas,
+control de versiones de nuestra DB, agregar informacion a nuestras tablas practicamente podremos hacer una gestion completa de 
+nuestra base de datos.
+Llegando el momento de adentrarnos al uso de base de datos en nuestra aplicacion extenderemos más los detalles sobre lo que se 
+puede generar en esta carpeta
+
+CARPETA PUBLIC
+Es donde debemos colocar todos los archivos que el usuario podra usar como
+vistas, scripts, css, vistas, documentos o imagenes pero ningun archivo que comprometa la integridad de nuestra aplicacion
+como lo serian configuraciones de entorno o dase de datos.
+
+CARPETA ROUTES
+Esta es la carpeta donde podremos hacer las redirecciones y generar las rutas de nuestra aplicacion
+
+CARPETA VENDOR
+En esta carpeta no metemos mano solo saber que es una carpeta destinada para composer y es la que se usa como referencia para 
+instalar librerias que usaremos en nuestra aplicacion mediante composer
+
+.ENV
+Mención especial en especifico al archivo .env que es un archivo de varibles de entorno lo usaremos a menudo especificamente 
+definiendo informacion de nuestra aplicacion como un nombre, cliente de correo, configuraciones para acceder a la dB o el
+dominio de nuestra app
+

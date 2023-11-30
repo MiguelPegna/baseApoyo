@@ -1,0 +1,60 @@
+INSTALACION DE EXPRESS JS Y DEPENDENCIAS
+Antes de instalar ExpressJS necesitamos ejecutar el sig comando dentro de la carpeta de nuestro proyecto
+	npm init --y
+Este comando creara un archivo llamado package.json con esto estamos indicando que vamos a trabajar con nodeJs y hacer uso de npm
+Con esto solo hemos empezado a preparar nuestro entorno para trabajar
+
+Para realmente empezar con el desarrollo de nuestro proyecto por medio de ExpressJs necesitamos instalar la dependencia del framework
+con el sig comando
+	npm i express
+
+Cabe mencionar que cuando ejecutamos el primer comando de instalacion de dependecia en nuestro proyecto esto crea una carpeta con el nombre de node_modules aqui es donde se instalaran los paquetes de las dependencias que usemos en nuestro proyecto
+
+DEPENDENCIAS: Las dependencias en terminos sencillos son librerias que nos facilitan enormemente el desarrollo de nuestra aplicacion ya que su instalación por medio de consola usando npm es muy sencillo y con ello aprovechamos las ventajas que nos brindan ya que solo nos encargamos de hacer la logica de negocio aprovechando las clases y funciones que tienen sin la necesidad de programarlas desde cero como podría serlo en un proyecto nativo.
+
+
+INSTALACION DE DEPENDENCIAS DE MAYOR USO
+
+	express                     framework para node
+	handlebars                  motor de plantillas
+	hbs                         reconocer extension hbs
+	express-session             Sesiones de servidor
+	express-validator	        Validador de la info para enviarla al controlador Funcion de middleware o Request
+	method-override             extender funcionalidad de forms y usar metodos como put o delete
+	mongoose                    Modulo de conexion a MongoDB
+	mongoose-unique-validator   validar campos para no repetirlos
+	mongoose-delete		        permite hacer un borrado de resgistros logico, crea un estado de activo o inactivo de forma boolean
+	sequelize		            ORM para mysql
+	mysql2			            libreria necesaria para usar mysql
+	passport                    simple, no intrusivo middleware de autenticación para Node
+	passport-local              permite autenticar utilizando un nombre de usuario y contraseña en sus aplicaciones Node. js. Al conectarse a Passport, la autenticación local se puede integrar de forma sencilla y discreta en cualquier aplicación o framework que admita middleware de estilo Connect, incluido Express
+	bcrypt                      para hashear passwords
+	jsonwebtoken		    Para el uso y manejo de jsonwebtokens
+	cors                        Para evitar problemas con los cors necesaria para cuando se esta haciendo una API REst
+	dotenv			    Para generar variables de entorno
+	multer 			    Para manejar carga de archivos
+	connect-flash               enviar notificaciones a diferentes vistas
+	nodemon                     reinicio de servidor automaticamente en entorno de desarrollo
+	node --watch src/index.js   reinicio de servidor automaticamente nativo desde node18
+
+	Instalar node 18.11 o superior para usar esta funcion en lugar de nodemon
+	Escribir en consola el sig comando
+		node --watch src/index.js
+
+
+
+Podemos instalar todas las dependecias necesarios o varias de ellas con un solo comando ejem
+	npm i express express-handlebars hbs express-session override method-override mongoose passport passport-local bcryptjs connect-flash
+ 
+INSTALAR TAILWINDCSS
+	nmp i tailwindcss
+SE RECOMIENDA AGREGAR LOS SIG PAQUETES 
+	npm i autoprefixer postcss postcss-cli
+DESPUES DE LA INSTALACION SE DEBE CORRER EL SIG COMANDO
+	npx tailwindcss init
+Esto crea un archivo tailwind.config.js
+
+Creamos un archivo post.config.js
+
+
+

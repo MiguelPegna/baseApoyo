@@ -1,0 +1,13 @@
+PETICION API CON USE EFFECT
+import { useEffect } from "react";
+
+//Hacer peticion a api 
+useEffect(() => {
+    const requestAPI = async() =>{
+        const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
+        const request = await fetch(url);
+        const response = await request.json();
+        console.log(response.Data);
+    }
+    requestAPI();
+}, []);

@@ -1,0 +1,20 @@
+EVENTOS REACT
+Los eventos en React son muy similares a como se usan en JS
+
+En React los eventos tienen camelcase
+Ejemplo en JS
+	<button onclick="downloadPedidos()">Bajalos</button>
+
+En REact JSX
+	<button onClick={ downloadPedidos() }>Bajalos</button>
+
+Ejemplo en JS
+	<form onsubmit="addCliente(); return false">
+		<button type="submit">Enviar</button>
+	</form>
+
+En REact JSX
+	<form onSubmit={ handleSubmit }>
+		<button type="submit">Enviar</button>
+	</form>
+

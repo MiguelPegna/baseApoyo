@@ -1,0 +1,57 @@
+CREAR EL SERVIDOR DE LA APLICACION
+
+Despues de generar la estructura de directorios de nuestro proyecto lo que prosigue es crear nuestro servidor
+El decir esto significa que crearemos los archivos que se necesitan para poder correr nuestro servidor y poder empezar con el desarrollo de nuestra aplicación
+
+Como se ha mencionado existen formas inumerables de crear un proyecto en expressJS
+Muchos generan todo el arranque y configuracion del servidor dentro de un solo archivo que generalmente es el index.js (o archivo de arranque)
+otros lo mencionan como app.js y otros tantos server.js
+
+En este caso trabajeremos el desarrollo de nuestro servidor usando dos archivos
+	server.js	que contendra la configuracion de nuestro servidor como el puerto de arranque y otras configuraciones como la configuracion de otras dependencias que seran constantes en el proyecto
+	index.js	El index solo sera el que hara el llamado a nuestro archivo server.js
+
+=====================================================================================================================================
+CREACION DEL ARCHIVO SERVER.JS CommonJS
+const express = require('express');	//se genera una constante con el nombre de express utilizando ya la dependencia de expressJS
+
+const app = express();			//instanciamos expressJs en una constante llamada app puede tener cualquier nombre pero es muy
+					comun hallarla dedinida con este nombre
+
+
+app.set('port', process.env.PORT || 3000);  //asignamos el puerto donde estaremos trabajando nuestra app el 3000 es usado como convencion
+
+module.exports = app;   //exportar app para poder usarla en otros archivos se usara para llamarlo en el index.js
+
+=====================================================================================================================================
+CREACION DEL ARCHIVO SERVER.JS ESModules
+import express from 'express';	//se genera una constante con el nombre de express utilizando ya la dependencia de expressJS
+
+const app = express();			//instanciamos expressJs en una constante llamada app puede tener cualquier nombre pero es muy comun hallarla definida con este nombre
+
+
+app.set('port', process.env.PORT || 3000);  //asignamos el puerto donde estaremos trabajando nuestra app el 3000 es usado como convencion
+
+export = app;   //exportar app para poder usarla en otros archivos se usara para llamarlo en el index.js
+
+=====================================================================================================================================
+CREACION DEL ARCHIVO INDEX.JS
+
+const app = require('./server');		//se incluye el modulo app que generamos en el server.js
+
+//Inicializamos el servidor
+app.listen(app.get('port'), ()=>{
+    console.log('Servidor activo en puerto: http://localhost:',app.get('port'), 'biatch', );
+});
+
+
+======================================================================================================================================
+INICIALIZAR EL SERVIDOR
+
+De esta manera ya tenemos listo nuestro servidor para empezar a desarrollar
+Para ponerlo a correr solo necesitamos ejecutar el sig comando en consola
+	node index.js
+	o node src/index.js   Esto lo hacemos si ejecutamos la consola desde la raiz del proyecto src es la carpeta e index.js es el archivo
+
+
+Para visualizar en el navegador nuestro proyecto escribimos en el navegador http://localhost:3000

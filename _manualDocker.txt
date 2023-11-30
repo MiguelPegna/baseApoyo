@@ -1,0 +1,89 @@
+DEscargar docker desktop
+La lista de imagenes para descargar las hayamos en hub.docker.com
+Comados docker
+docker images - Muestra lista de las imagenes que tenemos instalados
+docker pull nomImagen - Descarga la ultima version de la imagen
+docker pull nomImagen:numVersion  - Descarga la version de la imagen que le hayamos indicado
+Borrar Imagen
+docker image rm nomImagen - elimina la imagen
+
+Para utilizar las imagenes que descargamos es necesario crear un contenedor que usen nuestras imagens
+para hecerlo hacemos lo siguiente
+docker container create nomImagen o docker create nomImagen - Crea el contentedor. esto genera un id que sera necesario para utilizarlo
+asi que hay que copiarlo.
+
+Para poder ejecutar contnedor se usa el sig comando
+docker start numId - Este numId es el que se genero cuando creamos nuestro contenedor. 
+
+Para ver si el contenedor esta trabajando correctamente usamos el sig comando
+docker ps - Muestra una tabla con el estatus de la imagen
+
+Para detener el contenedor usamos el sig comando
+docker stop numId
+
+docker ps -a - para mostrar todos los contenedores alojados en nuestro sistema
+
+docker create --name NomContenedor nomImagen - Con este comando nosotros asignamos el nombre al contenedor
+docker create --name Monguito mongo - Este seria un ejemplo practico
+
+MAPEAR PUERTOS A CONTENEDOR PORT MAPPING
+docker create -p27017:27017 --NomContenedor nomImagen  - el primero es el puerto de nuestra maquina y el segundo es el puerto del contenedor que vamos a mapear
+
+MODO RESUMIDO
+docker run --name monguito -p27017:27017 -d mongo  - Esto crea un nuevo contenor cada vez que ejecutamos el comando docker run sin importar que sea la misma imagen
+
+CONECTAR CON CONTENEDOR
+docker create -p27017:27017 --name monguito -e MONGO_INITDB_ROOT_USERNAME=MiUsuario -e MONGO_INITDB_ROOT_PASSWORD=MiPassword mongo
+
+Meter APLICACION a un contendor
+Crear un archivo en nuestra carpeta de proyecto con el nombre dockerfile
+FROM nomImagen
+RUN mkdir -p /home/app   - Esta ruta hace referencia a las direcciones del contenedor no a la de nuestra maquina
+COPY . /home/app  - Copiamos nuestros archivos
+EXPOSE 3000  -pueto
+CMD ["node", "/home/app/index.js"]
+
+LISTAR REDES DE DOCKER
+docker network ls
+docker network create mired  - CRea una red de docker
+docker network rm mired      - eliminar red
+
+CREAR IMAGEN DE APLICACION en base al archivo dockerfile
+docker build -t miapp:V1 .   -el punto indica la ruta donde nos encontramos
+
+CREAR CONTENEDOR ASIGNANDO RED QUE CREAMOS
+docker create -p27017:27017 --name monguito --network mired e MONGO_INITDB_ROOT_USERNAME=MiUsuario -e MONGO_INITDB_ROOT_PASSWORD=MiPassword mongo
+CREAR CONTENEDOR DE LA APLICACION QUE SE HIZO
+docker create -p3000:3000 --name Contendor --network mired miapp:V1
+
+USAR DOCKER COMPOSE
+se crea un archivo con el nombre docker-compose.yml
+
+version: "3.9"   -version del dockercompose
+services:         -al dar enter se debe hacer una tabulacion para que funcione
+	MiApp:
+		build: .
+		ports:
+			- "3000:3000"     -mapeo de puertos
+		links:
+			- monguito
+	monguito:
+		image: mongo
+		ports:
+			- "27017:27017"
+		enviroment: 
+			- MONGO_INITDB_ROOT_USERNAME=MiUsuario 
+			- MONGO_INITDB_ROOT_PASSWORD=MiPassword
+
+		volumes:
+			- mongo-data:/data/db
+			- mysql -> /var/lib/mysql
+			- postgres -> /var/lib/postgresql/data
+volumes:
+	mongo-data:
+
+Para ejecutar este archivo ejecutamos el siguiente comando
+docker compose up
+docker compose down   - elimina lo hecho por el comando docker compose up
+
+Dockerfile.dev

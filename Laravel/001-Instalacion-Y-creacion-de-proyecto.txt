@@ -1,0 +1,42 @@
+INSTALACION
+Para instalar laravel primero se necesita tener instaldo composer que se encargara de ayudarnos 
+a instalar los paquetes y liberias necesarias.
+
+Buscar el instaldor de composer en internet e instalarlo
+
+Ya instaldo composer dentro de nuestro servidor local hacemos los sig
+- ejecutamos una terminal
+- escribimos el sig comando:
+
+	composer global require laravel/installer
+
+Esto instala el paquete que nos ayudara a instalar laravel.
+NOTA: Este comando solo se ejecuta cuando la computadora no tiene instalado el paquete de laravel
+despues de haberlo instalado no es necesario volverlo a ejecutar para generar futuros proyectos en laravel
+
+Ya instalado el paquete de laravel proseguimos a crear nuestro primer proyecto de laravel
+
+Hay que recordar que lo que vamos a hacer es preparar un entorno de trabajo para que podamos
+programar nuestra aplicacion recordar que laravel es un framework lo que significa que nos
+prepara un entorno listo para comenzar con el desarrollo de nuestra aplicacion.
+Para ello ejecutamos uno de los siguientes comando:
+
+	laravel new NomApp
+	composer create-project laravel/laravel NomApp
+
+NOTA: NomApp hace referencia al nombre que deseemos poner a nuestro proyecto
+
+Al dar enter esto se cargara y preparara nuestro entorno de trabajo y ya cuando se haya
+finalizado la instalcion podremos empezar con el desarrollo de nuestra aplicacion.
+
+Cabe mencionar que cunado creamos nuestro proyecto y lo queramos ver en el navegador al
+igresar la url http://localhost/NomApp/public esto siempre y cuando tengamos un servidor ya instalado
+
+O si ejecutamos el comando de arranque que es el de 
+	php artisian serve
+Esto en consola nos generara una url que podremos copiar y pegar en el navegador
+
+Esto nos mostrara una pagina mostrandonos las carpetas del proyecto para ver la pagina de
+vista tendremos que entrar a la carpeta public
+
+De esta manera se crea un entorno de trabajo usando laravel como framework

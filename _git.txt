@@ -1,0 +1,127 @@
+TEORIA
+QUE ES git
+Git es un software de control de versiones diseñado por Linus Torvalds, pensando en la eficiencia, la confiabilidad y compatibilidad del mantenimiento de versiones de aplicaciones cuando estas tienen un gran número de archivos de código fuente. 
+Su descarga es de forma gratuita en esta direccion https://git-scm.com/downloads
+
+En git tenemos 3 estado o fases.
+1 Working directory: Es donde trabajamos de manera local todos los archivos estos cambios no afectan la raiz master ni la dev porque los cambios que hacemos no se reflejan sobre estos sino solo en nuestros archivos lo cales
+
+2 Staging Area: Aqui se agregan los archivos que hemos estado modificando y preparando para el guardado  y subir al repositorio que es una nuevaversion del proyecto
+
+3 Repository: Aqui es donde pasamos cuanso finalmente estamos decidos a aplicar los cambios que hems estado trabajando 
+
+Recordar que git trabaja por medio de repositorios de codigo. 
+Puedes hacer tus propias versiones de proyecto en tu equipo local pero evidentemente cuando empieces a desarrollar en un equipo de trabajo los archivos del proyecto estaran alojados en la nube el sitio mas conocido ees github donde podremos acceder a los archivos de un proyecto de forma online.
+
+  Estas son configuraciones que debes de hacer de inmediato para poder trabajar con git esto permite dar identificación a nuestro equipo para reconocer quien es el que ha hecho cambios a los proyectos
+  git config --global user.email "Tucorreo"
+  git config --global user.name "Tunombre"
+  git config --global -e    Para ver el archivo de configuracion
+  git config --global core.autocrlf true    Se coloca true si estamos usando windows y input si es mac o linux
+  git config -h     Para ver una lista de todas las configuraciones que tiene git
+
+  Ya con tu nombre y email definido podremos usar los siguientes comandos para trabajar con git
+ COMADOS DE GIT bash
+ CREAR UN REPOSITORIO DE NUESTRO PROPIO PROYECTO DESDE CERO
+ Dentro de la carpeta de nuestro proyecto ejecutamos el siguiente comando
+
+ git init  inicializa un repositorio vacio dentro de nuestra carpeta
+ git add + nombre archivo: Se usa para pasar nuestro archivos del working directory a staging area.
+ git add *: Para poner todos los archivos trabajados para evitar hacerlo de uno en uno no es del todo recomendado ya que puede haber archivos no necesarios
+ git commit -m   mandar primer commit con mensaje claro de lo que ese commit esta haciendo
+
+ git remote add origin https://github.com/Usuario/repositorio.git    //paara subir nuestro codigo de repositorio por primera vez a github
+ git push -u origin main o   git push -u origin master  //indicamos que queremos que se suba en la rama principal
+ 
+En general cuando un programador que es contratado para unirse a un proyecto ya hecho no necesita usar estas linea de comando.
+
+Estas son las lineas de comando usadas para descargar un repositorio ya iniciado en el cual se va a participar
+git clone + url de descarga del proyecto: Este es el mas utilizado ya que con esto clonamos a nuestro equipo un proyecto que ya este siend otrabajo en git.
+
+git add + nombre archivo: Se usa para pasar nuestro archivos del working directory a staging area.
+
+git add *: Para poner todos los archivos trabajados para evitar hacerlo de uno en uno
+
+git status o git status-s: sirve para ver los archivos que hemmos estado trabajando y en que estado estan los archivos ya sea en el working directory, staging area o en el repository-
+
+git commit: Es para pasarlo del staging area al repositorio, es para poder crear una version de código.  Agragamos un comentario sobre la mejora que se le hizo.
+            Presionar despues :wq
+            o tambien para evitar entrar a la ventana usamos:
+            git commit -m "Escribe mensaje"
+
+git push: es para subirlo a un repositorio remoto para subirlos a los servidores para que pueda ser accedido por los desarrolladores que tienen los permisos para modificar el codigo.
+
+git log: para ver los commit que hemos hecho y su autor
+
+git diff nomarchivoYextension: Con esto podemos ver la diferencia que hay entre dos archivos
+
+git checkout --NombreDearvoConExtension: Para regresar a una version atras del archivo
+
+git checkout NombreRama: Para entrar en alguna rama  especifica del proyecto
+
+git checkout -b nomRama: Sirve para crear una rama nueva solo que al agregar el parametro -b le indicamos que despues de crear esa rama nos
+                  deseamos ubicar en ella
+
+git branch nomRama: Sirve para crear una nueva rama o version de proyecto; creamos ramas para ir integrando o actualizando las nuevas carateristicas
+                  Que tendra el proyecto sin la necesisdad de afectar el Master que debe ser el la version funcional del proyecto;
+                  
+git branch: para mostrar en que rama del proyecto estamos
+
+git branch -m nomRama NuevoNombreRama: para cambiar de nombre a una rama.
+
+git branch -d nomRama : para borrar una rama
+
+git pull: se emplea para extraer y descargar contenido desde un repositorio remoto y actualizar al instante el repositorio local para reflejar ese contenido
+          Practicamente es como en cierta manera reiniciar el proyecto para poder entrar a trabajar a una nueva rama con cambios aplicados
+git pull origin NomRama
+
+git remote add origin +URL: esto sirve para indicar a que direccion vamos a estar almacenando nuestros caambios al proyecto.
+
+git pusgit lmente pide identificacion de usuario y contraseña para acceder a el
+
+Para evitar hacer commit o subir archivos que manejan informacion como usuarios o contraseñas en variables de entorno se puede restringir o que se ignoren esos archivos
+a la hora de hacer commits
+Para ello se crea un archivo llamado 
+ .gitignore
+
+y en se agregan las rutas o archivos a ignorar. ejem
+config.php
+carpeta_importante/
+
+Agregar implementacion de ramas a la rama principal
+Para agregar los cambios de una rama a la rama principal del proyecto
+Primero hay que estar dentro de la rama principal
+git checkout RamaPrincipal
+Posteriormente hacemos un merge
+git merge RamaB
+
+Estos son los comandos básicos y de mayor uso ya conforme adquieras mayor experiencia aprenderas más comandos
+
+git push --set-upstream origin secondary
+
+
+
+Descartar cambios locales que no se aplicaran
+If you want remove all local changes - including files that are untracked by git - from your working copy, simply stash them:
+
+git stash push --include-untracked
+If you don't need them anymore, you now can drop that stash:
+
+git stash drop
+
+
+
+Try deleting index.lock file in your .git directory or in one of your worktrees .git/worktrees/*/index.lock if you are in a worktree.
+
+rm -f .git/index.lock: cuando se ejecutan dos comandos a la vez
+
+Trabajar con ramas.
+Se pueden generar las ramas necesarias y cada integrante del equipo trabajar su propia rama
+Para añadir los cambios a una rama o a la rama principal se usa git marge ejem
+Primero nos colocamos en la rama a la que quereos integrar los cambios que provengan de otra rama
+Entonces primero tenemos que hacer un git checkout
+git checkout nomRama
+Ya en la rama haremos un git merge haciendolo de la sig manera
+git merge nomRamaParaAgregar
+Al ya no usar la rama que se fusiono la podemos eliminar usando un
+git branch -d nomRama

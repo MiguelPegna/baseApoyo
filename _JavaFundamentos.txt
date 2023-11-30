@@ -1,0 +1,16 @@
+Java Building Blocks (Bloques constructores de java)
+Java Class Structure
+
+main()
+public static main void main(String args[]){}
+Es una funcion que puede serinmediatamente ejcutada
+
+javac es para compilararchivo
+java es para ejecutar
+Package and imports
+
+Objects
+
+Variable Scope
+
+Benefits of Java

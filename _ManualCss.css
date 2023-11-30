@@ -1,0 +1,349 @@
+/*Curso manual de css*/
+/*Estrcutura de css*/
+
+Selector {
+	propiedad: valor;
+}
+
+/* SELECTORES
+
+Universal: Se representa por el asterisco * y se refiere a todos los bloques. ejem. */
+ * {
+	color: #f00;
+ }
+
+ /* De tipo: Son los que usamos para seleccionar etiquetas html de un tipo ejem. */
+ h1 {						 /* Con esto le estamos dando formato a todas las etiquetas <h1> */
+	color: #fff;
+	Font-type: Arial;
+ }
+
+ /* De Clases: Es una forma mas especifica de dar formato a una etiqueta en especifico sin alterar a etiquetas del mismo tipo
+ Ejemplo si tenemos varias etiquetas <h1> pero solo queremos que una tenga propiedades en especifico que no queremos que las otras etiqutas <h1> tengan.
+ catalogamos con una clase a la etiqueta h1 que deseamos que seria de la sig manera
+ En nuestro HTML <h1 class="titulo">
+ En nuestro Css. */
+ .titulo {   			/*Nota: Para seleccionar por clases se utiliza un punto seguido del nombre de la clase que queramos */ 
+	color: #000;      /* De esta manera es como le damos formato a todos los bloques que pertenezcan a la clase titulo*/
+ }
+ /*NOTA IMPORTANTE trabajar con class en nuestro html es lo mas recomendable puesto conforme hagamos diseños mas detallados o complejos nuestros bloques 
+pueden necesitar una caracteristica o mas. Lo que quiere decir que un bloque en nuestro html puede tener mas de un estilo ejem*/
+/*En nuestro html podemos tener el siguiente bloque con mas de una clase.
+		<label class="clase1 clase2">Enunciado</label>
+Como puedes notar nuestro label cuenta con dos clases clase1 y clase2 que se distinguen solo al ser separados por un espacio asi que tu puedes poner 
+todas las clases que requieras a un bloque mientras esten dentro de las comillas del class y esten separados por un espacio.*/
+.clase1 {
+	color:aqua;
+}
+.clase2 {
+	background-color: green;
+}
+/*Con esto estamos haciendo que nuestro label obtenga dos estilos debido a que le asignamos dos clases que tienen estilo diferente
+
+
+/* Por ID: Esta es una forma unica y especifica que se usa para dar formato unicamente a un solo bloque, como la seleccion nos indica la usar un id esto lo hace un bloque unico por lo tanto solo un unico bloque contara con este formato
+Se usa solo en bloque que solo aparecen una sola vez en el codigo
+En nuestro HTML <h1 id="titulo">
+En nuestro Css. */
+ #titulo{   		/*Nota: Para seleccionar por id se utiliza un # seguido del nombre del id que queramos*/
+	color: #000;
+ }
+
+/* Por atributo: De esta forma damos formato a un atributo o propiedad de un bloque que queramos.
+En nuestro HTML <h1 atributo1="titulo">
+En nuestro Css. */
+ [atributo1="titulo"] {   /*Nota: Para seleccionar por atributo o propiedad se utilizan corchetes [] seguido del nombre del atributo o propiedad mas su valor que le hayamos asignado*/
+	color: #000;
+ }
+
+/* Descendiente: De esta manera podemos dar formato a bloques que esta dentro de otros bloques por ejemplo:
+En nuestro HTML <div><h1>Texto</div>
+En nuestro CSS: */
+div h1{     /*Nota Para hacerlo primero colocamos el nombre del contenedor que contiene dentro de si al bloque que queramos dar formato seguido del bloque que queremos dar formato */
+	color: yellow;
+}
+
+/* Esta manera tambien la podemos utilizar con las clases y los id ejem
+con class */
+.NomClase bloque{
+	color: pink;
+}
+
+/* Con id */
+#NomId bloque{
+	color: red;
+}
+/*propiededades del div*/
+/*los div son las cajas que tendra nuestro contenido y estos son sus propiedades más comunes*/
+div{
+	/*PROPIEDADES BASICAS*/
+	width: auto;	/*da un ancho por defecto*/
+	height: auto;   /*da un alto por defecto*/
+	width: 800px;   /*de esta forma declaramos el ancho del contenedor con la medida que necesitemos*/
+	height: 500px;  /*de esta forma declaramos el alto del contenedor  con la medida que necesitemos*/
+	background-color: silver;	/*para darle color de fondo a nuestro contenerdor*/
+	background: linear-gradient(to bottom, transparent, blue);
+								/*display modifica el comportamiento de las cajas*/	
+	/*POSICIONAMIENTO*/
+	display: inline; 			/*acomoda a los bloques como en linea se usa mayormente en textos y no se les puede aplicar width ni heigth*/
+	display: block;				/*acomoda los bloques en bloque uno por linea*/
+	display: inline-block; 		/*amoda los bloques en linea y bloque a la vez*/
+	display: flex;				/*permite que el bloque sea flexible*/
+	display: none;				/*permite ocultar el bloque y no reserva el espacio del elemento*/
+	display: hidden;			/*permite ocultar bloque  reserva el espacio del elemento**/
+	display: grid;				/*permite generar y acomodar los elelemtos en rejilla */
+	display: inline-flex;		/*bloques en linea pero de forma flexible */
+	display: inline-grid;		/* elelemtos en linea para su uso en rejilla*/
+								/*Nota: los ultimos 4 son propiedades que sirven para generar un diseño mejorestrcturado ,ediante flex-box y grid
+								los estaremos ocupando en un apartado propio.*/
+
+
+	position: relative;			/*posiciona al bloque de tal manera que el espacio de origen donde se ubica el bloque se mantiene como si estuviese ocupandolo aunque lo movamos de posicion*/
+	position: absolute;			/*posiciona al bloque de tal manera que el espacio de origen donde se ubica el bloque se pierde y lo ocupa el siguiente elelemto y ajusta el tamaño de la caja al contenido*/
+	position: static;			/*posiciona al bloques de forma estatica es el valor por defecto*/
+	position: fixed;			/*posiciona al bloque como absolute pero este queda fijado en pantalla siempre visible sin importar que bajemos*/
+	position: sticky;			/*posiciona al bloque como si estuvieramos utilizando absolute y fixed al mismo tiempo*/
+								/*en position podemos uilizar top, left, right y bottom para mover su posicion en el documento
+								siendo top y left las de mayor jerarquia rigth y bottom solo funcionana cuando no estamos usando left y top*/
+	z-index: 20;				/*esta propiedad nos permite ordenar a los bloques su posicion de frente o sea sobreponer bloques uno encima del otro
+								/*el que tenga mayor valor mas arriba estara y se vera por encima de los bloques que esten en su posicion; esta propiedad solo aplica cuando estamos usando eñ position*/
+
+	overflow: auto;			/*con overflow podemos decidir que pasa con el contenido de la caja cuando este se desborda o se sale de los limites del contenedor
+							auto;		genera un scroll dentro del bloque si el contenido se sale del bloque
+							scrool;		pone un scroll aunque el conteido no se salga del bloque
+							hidden;		oculta el contenido que se salga del bloque */
+							/*float era utilizado para acomodar los bloques de tal manera de posicionarlos de la manera que desearamos en el documento pero
+							esta propiedad no fue diseñada para eso sirve pero genera algunos contratiempo con los cuales hay que batallar un poco ára lograr
+							el acomodo deseado hoy en dia para hacer el acomodod y distribucion de los bloques se usa grid y flex-box 
+							El float es una propiedad para el acomodo de imagenes generalmente se usa para hacer un efecto de texto envolvente al rededor de la imagen*/	
+	float: right;			/*acomoda a la derecha */
+	float: left;			/*acomoda a la izquierda */
+	float: top;				/*acomoda arrriba */
+	float: bottom;			/*acomoda abajo */
+
+	/* MARGIN Y PADDING  Estos son bordes para definir el espacio que tendran los bloques entre si y su contenido*/
+	/*Margin*/
+	/*El margin es el espacio que habra entre un bloque y otro y estas son sus propiededes*/
+	margin: auto;              /*da un valor por defecto al margin*/
+	margin-top: 20px;		/*margen superior del bloque*/
+	margin-right: 58px;		/*margen del lado derecho del bloque*/
+	margin-bottom:25px;		/*margen inferior del bloque*/
+	margin-left: 15px;		/*margen de lado izquierdo del bloque*/
+	margin: 35px;			/*al usar solo margin y un valor declaramos que todos los lados tendran el mismo tamaño de margen*/
+	margin: 10px 50px;      /*al usar margin con dos valores declaramos que el margin-top y el margin-bottom: seran de 10px y el margin-left y rmargin-right de 50px*/
+	margin: 10px 15px 30px; /*al usar margin con tres valores equivale a top 10px, right 15px, bottom 30 px y aunque el left no esta declarado toma el valor de 15px como el right*/
+	margin: 5px 20px 30px 50px /*cuando queremos dar margin diferente a cada lado podemos solamnete usar margin y poner los 4 valores de cada lado*/
+
+	/*padding*/
+	/*El padding es el espacio que habra entre el contenido de un bloque y sus bordes y sus propiededes son similares al margin */
+	padding: auto;             /*da un valor por defecto al padding*/
+	padding-top: 20px;			/*espacio superior del bloque*/
+	padding-right: 58px;		/*espacio del lado derecho del bloque*/
+	padding-bottom:25px;		/*espacio inferior del bloque*/
+	padding-left: 15px;		/*espacio de lado derecho del bloque*/
+	padding: 35px;			/*al usar solo padding y un valor declaramos que todos los lados tendran el mismo tamaño de espacio*/
+	padding: 10px 50px;      /*al usar padding con dos valores declaramos que el padding-top y el padding-bottom: seran de 10px y el padding-left y padding-right de 50px*/
+	padding: 10px 15px 30px; /*al usar padding con tres valores equivale a top 20px right 15px bottom 30 px y aunque el left no esta declarado toma el valor de 15px como el right*/
+	padding: 5px 20px 30px 50px /*cuando queremos dar padding diferente a cada lado podemos solamnete usar padding y poner los 4 valores de cada lado*/
+	
+	/*BORDES*/
+	outline: 10px skyblue;    /*genera un borde que no ocupa espacio*/
+
+	/*TEXTO*/
+	font-family: "Helvetica";      /*tipo de letra*/
+	font-weight: bold;             /*negrita se pueden usar valore de 100 en cien para el grueso del remarcado*/
+	font-size: 20px;				/*tamaño de la fuente*/
+	color: pink;					/*color de la fuente*/
+
+	/*IMAGENES*/
+	object-fit: cover;		/*se utiliza para evitar que las imagenes se distorciones demasiado aun cuando su width cambie la imagen se ajusta su contenedor*/
+	object-fit: contain;    /*Valor por defecto la imagen ajusta su tamaño a sus dimensiones*/
+	object-fit: none;       /*pone las dimensiones originales de la imagen sin importar el tamaño del bloque*/
+	object-fit: scale-down;	/*se acomoda de la mejor manera dentro del contenedor ya sea contain o cover esto dependera del tamaño de la imagen y del bloque*/
+
+	object-position: left;		/* recorre la imagen a la izquierda dentro del bloque   */
+	object-position: right;		/* recorre la imagen a la dercha dentro del bloque   */
+	object-position: top;		/*  recorre la imagen hacia arriba dentro del bloque  */
+	object-position: bottom;	/*   recorre la imagen hacia abajo dentro del bloque */
+	
+	/*CURSORES*/
+	cursor: pointer;        /*revisa la siguiente paga para ver los diferentes tipos de cursor que puedes aplicar*/
+	cursor: hand; 			/*	https://www.w3schools.com/cssref/tryit.asp?filename=trycss_cursor   */
+	cursor: url(cursor.png), auto; /*poner un cursor personalizado*/
+
+	/*	EFECTOS*/
+	transform: rotate(45deg);    /*sirve para girar el bloque*/
+	opacity: 1;					/*es la transparencia de un bloque solo tiene valor 0 y 1 con rangos de 0.1 a 0.9 mientras mas cerca del 0 su transparencia sera mayor*/
+	box-shadow: 0.20rem 0.20rem 0.41rem rgba(0, 0, 0, 0.2); 	/*dibuja una sombra*/
+	text-shadow: 0.20rem 0.20rem 0.41rem rgba(0, 0, 0, 0.2);    /*dibuja sombra el texto del objeto*/
+}
+
+/*Pseudo clase: Son los eventos de las clases los mas comunes es hover y active ejem: */
+.toque:hover{    /*Nota: de esta manera le decimos al utilizar hover que al pasar el cursor sobre cualkquier bloque cambie de color*/
+	color:red;
+} 
+a:link{
+	color: aqua;		/*sirve para dar formato a in enlace que no hemos visitado*/
+}
+a:visited{
+	color:#f00;			/*sirve para dar estilo a un enlace ya visitado/*/
+}
+.caja:active{
+	background: gold;	/*Sirve para dar estilo cuando se activado el bloque*/
+}
+input:focus{
+	background: greenyellow; /*sirve para dar estilo a un input cuando esta onfocus*/
+}
+/*pseudoelementos estos permiten hacer cambios visuales que no afectan directamente al documento y su estructura se aplican sobre elemntos */
+.pseudo::first-line { 			/*sirve para darle estilo a la primera linea del bloque sin importar el tamaño de la apantalla funciona solo con display:block*/ 
+	color: royalblue;    
+}
+.pseudo::first-letter { 		/*sirve para darle estilo a la primera letra del bloque unciona solo con display:block*/
+	color: royalblue;    
+}
+input::placeholder {
+	color: darkgray;       /*se aplica para darle formato al placeholder de un formulario*/
+}
+input::selection {
+	color: purple;       /*cambia el formato de los colores de seleccion*/
+	background-color: palevioletred;
+	font-size: 12px;
+}
+b::before{             /*Este pseudoelemento before genera "hijos" a un elemento manera que es visual para nosotros pero no afecta al documento */
+	content:"1890";    /*content es la propiedad de estos pseudoellemtos y con ella ponemos lo que queremos que ser agreguie */
+}
+b::after{             /*Este pseudoelemento after genera "hijos" a un elemento de manera que es visual para nosotros pero no afecta al documento*/
+	content:"1890";    /*content es la propiedad de estos pseudoellemtos y con ella ponemos lo que queremos que ser agreguie */
+}
+/*RESPONSIVE DESIGN
+Parte fundamental de trabajar diseños web es la adaptiabilidad que le podamos dar a nuestro diseño para dispositivos mobiles pera lograrlo
+damos ciertas caracteristicas a nuestro bloques para que puedan adpatarse a los dispositivos moviles
+Se puede puede realizar solo con el posicionamiento de cajas y propiedades como float pero esto a pesar de ser funcional resulta en muchos 
+casos obtener el posicionamiento deseado pera esto hay dos metodos mas sencillos copn cuales manipular nuestros bloques y es por medio de 
+flexbox y grid
+/*NOTA: tanto flexbox como grid nos permiten realizar estructuras de sitios web que se puedan adaptar a dispositivos moviles pero para hacerlo de mejor
+manera tambien se usan lo jquery que son instrucciones que nos permitiran estructurar mejor nuestro website a dispositivos moviles
+Despues de ver las propiedades del flexbox y grid veremos el uso de los jquery 
+/*Flexbox: Es una propiedad de css con la cual podemos posicionar nuestros bloques tanto de forma vertical como horizontal de una manera mas senciila
+dejando de lado los float.
+Para usar el flexbox de la mejor manera es necesario utilizar un contenedor que sea el contenedor padre que a su vez tenga dentro de si otros contenedores
+que seran los contenedores hijo
+Con flexbox no es necesario recurrir a la propiedad display:inline.block;
+para poder usar flexbox en nuestra pagina lo agregamos display:flex; a nuestro contenerdor ejem*/
+
+.contenedor-padre {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	padding: auto;
+	display: flex;  /*significa vamos a trabajar este contonedor de manera flexible*/
+	width: 100%;
+	flex-direction: row;  /*sirve para establecer direccion de posicionamiento de nuestros cajas dentro del contenerdo
+	                       tiene 4 valores
+						   row	valor por defecto y su acomodo es horizontal
+						   column	acomoda los bloques de manera vertical
+						   row-reverse	acomodo horizontal de derecha a izquierda
+						   column-reverse	acomodo vertical de derecha a izquierda*/
+	flex-wrap: wrap;      /*permite respetar las medidas del contenedor puesto que si los bloques rebasan el ancho del contenedor estos no se sigan
+                           acomodando, sino que den un salto de linea ademas de wrap tiene otras propiedades
+						   no-wrap	acomoda todos los bloques en el contenedor sin hacer saltos de linea
+						   wrap-reverse	acomodo de bloques de abajo hacia arriba */
+	flex-flow: row wrap;	/*Este es un atajo por decirlo de una manera que nos permite simplifficar en una linea las propiedades del direction y wrap*/
+
+	justify-content: flex-start; /*posicion de los bloques y su distribucion de manera horizontal en el contenedor
+									flex-start		valor por defecto coloca los bloques de izquierda a deracha
+									flex-end		coloca los bloques de derecha a izquierda sin alterar orden de los bloques a diferencia de la propiedad reverse
+									center			centra los bloques
+									space-evenly	Espacio equitativo
+									space-around	distribuye los bloques por todo el ancho del contenedor dejando un espacio entre ellos de manera proporcional
+									space-beetwen	es similar al space-around solo que este no aplica espacio al inicio ni al final sirve para poner dos bloques 
+													uno en cada extremo un ejemplo practico seria el logo en la izquierda y un menu a la derecha*/
+	
+	align-items: flex-start;		/*Esta propiedad es similar a justify-content solo que esta los acomoda de manera vertical en el contenedor se trabaja con rolumn
+									flex-start	valor por defecto coloca los bloques en la parte superior del contenedor
+									flex-end	coloca los bloques en la parte inferior del contenedor
+									center		coloca los bloques en la parte de enmedio del contendor
+									stretch		hace que los bloques abarquen el 100 del alto del contenedor
+									baseline	Nos permite que la fuente vaya alineada igual sin importar que el tamaño de la letra entre los bloques varie*/	
+
+	align-content: flex-start;		/*Esta propiedad alinear correctamente grupos de bloques que se colocan en filas estos cambios lo podemos ver de mejor
+									manera usandolo con el flex-wrap: wrap;
+									flex-start		valor por defecto coloca los bloques en la parte superior del contenedor
+									flex-end		coloca los bloques en la parte inferior del contenedor
+									center			coloca los bloques en la parte de enmedio del contendor
+									stretch			hace que los bloques abarquen el 100 del alto del contenedor funciona con un height auto
+									space-around	distribuye los bloques por todo el alto del contenedor dejando un espacio entre ellos de manera proporcional
+									space-beetwen	es similar al space-around solo que este no aplica espacio al inicio ni al final sirve para poner dos bloques 
+													uno en cada extremo un ejemplo practico seria el logo en la izquierda y un menu a la derecha*/
+
+	-webkit-flex-wrap: nowrap;
+	    -ms-flex-wrap: nowrap;
+	        flex-wrap: nowrap;
+	-webkit-flex-direction: row;
+		-ms-flex-direction: row;
+			flex-direction: row;
+	-webkit-justify-content: center;
+		-ms-flex-pack: center;
+			justify-content: center;
+	-webkit-align-items: center;
+		-ms-flex-align: center;
+			align-items: center;
+	/*Estas son las propiedasque se manejan en el ontendor padre*/
+}
+    /*ahora vamos a ver las propiedades qeu deben tener los contenedores hijos para que el flexbox funcione como debe*/
+
+.contendor-hijo {
+	width: 250px;               /*para tener un mejor moldeado de bloques el contenedor hijo debe tener ancho y altura*/
+	height: auto;
+	flex-basis: 50px;			/*flex-basis es similar al width solo que flex-basis una propiedad dinamica*/
+	flex-grow:1;				/*nos permite indicar cuanto crecera un contenedor en proporcion de los demas*/
+	flex-shrink: 1;				/*nos permite indicar cuanto diminuira un bloque a proporcion a los demas*/
+	flex: 0 0 0;            	/*Esta linea equivale a tener flex-grow, flex-shrink y flex-basis en ese orden*/
+	order: 1;   				/*nos permite darle un orden a un bloque para mostrarlos segun lo necesitamos sin cambiar la estructura del codigo*/
+	align-self: flex-start;		/*alinear un bloque inbdependientemente de los demas
+	 							/*flex-start	valor por defecto coloca los bloques en la parte superior del contenedor
+									flex-end	coloca los bloques en la parte inferior del contenedor
+									center		coloca los bloques en la parte de enmedio del contendor
+									stretch		hace que los bloques abarquen el 100 del alto del contenedor funciona con un height auto
+									baseline	Nos permite que la fuente vaya alineada igual sin importar que el tamaño de la letra entre los bloques varie*/	
+}
+
+/*grid		
+DEFINICIONES
+Grid Container: Es el padre directo de todos los elementos que esten dentro de la cuadrilla
+grid item: Elementos dentro del grid container 
+grid lines: Son las lineas que dividen toda la estructura de la rejilla, tanto verticales como horizontales
+grid track: Espacio entre dos lineas de la grilla de forma adyacente. puede ser horizontal o vertical
+grid cell: Son los espacio que rodean a una celda
+*/
+.grid-container {		/*Bloque que sera el contenedor principal de la rejjila y que tendra todos los elementos dentro de el*/
+	width:80%;          /*Ancho del contendor*/
+   	height:auto;
+	   /*propiedades del gird*/
+	display: grid;      /* para usar grid lo hacemos mediante la propiedad display con valor gid*/
+	grid-template-columns: 200px 200px 250px 300px; /*Con esto declaramos que queremos 4 columnas en el grid con las memidas quew queramos especificar*/
+	grid-template-rows: 150px 30px 300px; 		/*El mismo concepto de columns pero estavez con rows filas;*/	
+	grid-template-areas: 
+	"header header header header"   /* . representa un espacio*/ 
+	"lateral main lateral";
+}
+
+.grid-item {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	/*Estos deben ser los valores que deben tener los grid-items para poder alinearlos
+	por ejemplo en este caso estamos diciendo que el grid item su posicion de inicio sea desde la linea 1 del grid y que termine en la linea 3
+	Esto significa que el item ocupara 2 celdas en nuestro gid en las columnas*/
+	grid-row-start: 3;
+	grid-row-end: 4;
+	/*Estos deben ser los valores que deben tener los grid-items para poder alinearlos
+	por ejemplo en este caso estamos diciendo que el grid item su posicion de inicio sea desde la linea 3 del grid y que termine en la linea 4
+	Esto significa que el item ocupara 1 celda en nuestro gid en las filas*/
+	/*Atajos de esas lineas*/
+	grid-column: 1/3;  /*o span 2; */
+	grid-row: 3/4;     /*o span 1; */
+	grid-gap: 10px;    /*separacion entre filas y columnas basicamente un margen*/
+}
+
+/*media query */
+
+/*animacion  */

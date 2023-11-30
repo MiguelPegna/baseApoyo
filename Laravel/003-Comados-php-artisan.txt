@@ -1,0 +1,31 @@
+COMANDOS PHP ARTISAN
+Laravel es uno de los frameworks mas potentes, versatiles y eficientes que hay no solo en php sino en cualquier lenguaje de
+programacion
+
+Algo que le da muchos puntos a laravel es que nos brinda eficacia y que nuestro tiempo de desarrollo sea lo mas optimo permitiendonos
+enfocarnos solamente en el desarrollo de nuestra aplicacion
+Como nos brinda esto laravel? por medio de la implementacion del uso de comandos por consola
+Esto lo obtenemos al haber instaldo el paquete de laravel por medio de composer
+
+QUE OFRECE USAR COMANDOS POR CONSOLA EN LARAVEL?
+La principal ventaja de usar comando en laravel es la creación de archivos en nuestro proyecto y no solo archivos sino ejecucion
+de comandos que permiten crear y llenar con informacion tablas en nuestra base de datos, entre otras cosas que se estaran viendo.
+
+En especial mencionaremos en lo que mas nos enfocamos en laravel, al ejecutar un comando en consola podemos generar archivos no solo 
+con el nombre y la extension sino generar archivos ya listos solo para empezar a codificar por lo cual esto reduce significativamente
+ el tiempo de teclear o copiar y pegar codigo semejante como lo hariamos en un controlador o cualquier archivo
+
+PHP ARTISAN
+Dejando de lado la mencion de las ventajas de uso de comando en nuestro proyecto hay que empezar a ver como usar esta herramienta
+
+Cualquier comando que usemos dentro de laravel se distingue basicamnete con:
+	php artisan
+	o sail si se tiene instaldo un entorno en docker
+php artisan es el corazon de los comandos en consola en laravel siempre que ejecutemos un comando en laravel siempre tendra 
+php artisan
+
+Si ejecutamos este comado en nuestra consola nos mostrara una lista con todas la acciones que podemos usar con este comando
+y jjunto con ello una breve descripcion de lo que hacen estos comandos
+Te sugerimos ejecutar este comando y ver por ti mismo lo que podemos generar mediante esta herramienta
+
+Veremos de manera más extensa varios de estos comandos cuando lleguemos al apartado donde se requiere usarlos

@@ -1,0 +1,30 @@
+VARIABLES DE ENTORNO ARCHIVO .ENV
+
+Es importante en el desarrollo contar con variables de entorno que nos permiten tener mayor seguridad con datos importantes
+de nuestra aplicacion como el nombre de db, contraseñas, y puertos de entrada
+para eso existen los archivos .env
+donde creamos variables globales donde podemos almacenas esta info sin comprometerla en el codigo de manera directa
+
+Para poder utilizar archivos .env tenemos que instalar la dependencia dotenv mediante el sig comando
+	npm i dotenv
+
+Ahora podemos crear un archivo con el nombre .env en el cual declararemos las variable de entorno que necesitemos y consideremos propias
+Ejem archivo.env
+
+PORT=3000    //declaramos el puerto de nuestro servidor
+NOM_DB=nameDB  //nombre de vbase de datos
+
+Por convencion las variables de entorno se declaran en mayusculas y se usan guiones bajos como espacio
+
+=================================================================================================================================
+USAR VARIABLES DE ENTORNO
+En el archivo en donde creamos nuestro servidor colocamos la sig linea en nuestro caso es el archivo server.js
+	require('dotenv').config();     //de esta menera estamos incluyendo la dependecia dotenv
+
+De esta manera podemos utilizar las variables de entorno que declaramos en el archivo .env
+
+const DB_URL = process.env.NOM_DB;
+
+
+otra manera de incluir dotenv
+require('dotenv').config({path: './.env'});

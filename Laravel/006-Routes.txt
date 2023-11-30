@@ -1,0 +1,45 @@
+RUTAS URL DEL PROYECTO
+Las rutas url de nuestro proyecto las definiremos dentro de la carpeta routes en el archivo web.php
+	routes/web.php 
+
+Cuando una url no se define Laravel mostrara un error 404
+
+Ejem:
+Sintaxis de ruta es un Clousure o Clausula: Es una función que guarda referencias del estado adyacente. 
+En otras palabras, nos permite acceder o mejor dicho ejecutar una funcion dentro de una funcion
+
+Route::get('/', function () {
+    return view('welcome');
+});        //Esto nos indica que si hay un "/" al final de la url esto nos redireccionara a la vista de welcome
+Route      - Hace referencia a la clase que laravel usa para que nosotros podamos generar nuestras rutas
+get        - No solamente es el metodo de la clase sino que tambien hace referencia al metodo http que se esta usando
+	     en este caso get es el metodo que se usa cuando se pasa la info por medio de la url del navegador
+'/'        - En este caso la diagonal define la ruta principal del proyecto o mejor dicho la url a la cual estamos apuntado
+function() - Es una funcion de callback, callback es una función que se pasa a otra función como un argumento, que luego se 
+             invoca dentro de la función externa para completar algún tipo de rutina o acción
+return     - Es lo que decidimos devolver cuando se ejecuta la funcion
+ 
+Enviar Variables por la url
+Para generar url con variables enviadas por el metodo Get se hace lo sig.
+
+Route::get('/PerfilUsuario/{idUser}', function ($idUser) {
+    return view('perfil');
+});
+
+PASAR MAS DE UNA VARIABLE
+Route::get('cursos/{curso}/{categoria}', function ($curso, $categoria) {
+    return view('welcome');
+});
+
+ESPECIFICAR QUE UNA VARIABLE PUEDE SER OPCIONAL
+Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria=null) {
+    return view('welcome');
+});
+
+Estos ejemplos son de rutas muy simples y el punto es entender mas que nada el funcionamiento del Closesure
+ya que generalmente crearemos rutas que tengan que trabajar con un controlador esa parte la estaremo viendo 
+mas adelante cuando generemos nuestro primer controlador
+
+Este proceso de creacion de rutas es repetitivo y puede resultar tedioso 
+algo muy recomendable es instalar a vs code una extencion que automatice este proceso como
+ laravel Snippets

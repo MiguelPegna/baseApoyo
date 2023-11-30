@@ -1,0 +1,25 @@
+CREAR VIRTUAL HOST
+Abrir el bloc de notas como administrador
+ctrl+a
+localizarnos ern la sig ruta: C:\Windows\System32\drivers\etc
+Seleccionar abrir todos los archivos
+Abrir el archivo hosts
+
+agregar lo sig al final 127.0.0.1 nombreDominioLocal
+guardar archivo
+Ahora vamos a xampp/apache/conf/extra
+Abrimos el archivo httpd-vhosts.conf
+Al final agregamos lo sig
+
+NameVirtualHost *
+<VirtualHost *>
+  DocumentRoot "D:\xampp\htdocs"
+  ServerName localhost
+</VirtualHost>
+<VirtualHost *>
+  DocumentRoot "D:\xampp\htdocs\mygram\public"
+  ServerName mygram.test
+  <Directory "D:\xampp\htdocs\mygram\public">
+    Require all granted
+  </Directory>
+</VirtualHost>

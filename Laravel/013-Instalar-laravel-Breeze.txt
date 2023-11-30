@@ -1,0 +1,47 @@
+Breeze
+
+Es un paquete de autentificación para laravel
+Este paquete incluye las funciones para crear cuenta, autenticar, recuperar password
+confirmar cuenta y verificar email
+
+Hecho en blade y tailwind css
+
+crea los controladores y vistas a lo hora de instalar el paquete
+
+Otros paquetes para hacer esto son
+Fortify: Paquete de autentificacion para frontend donde se puede implementar de backend laravel
+	Una carecterista es la autentificación en 2 factores
+	Fortify no incluye interfaz de usuario, pero si puede usar los endpoint de breeze
+	Para usar fortify Breeze debe estar instalado tambien
+	Al ser enfocado en fornt se puede usar para utilizarlo en aplicaciones de fluttter o react native
+
+Sanctum: Diseñado para ser utilizado como metodo de autenticacion par apps hechas con angular, vue, nextJs, nuxt o react
+	que son aplicaciones en una sola pagina
+	Tambien usa los endpoint de Breeze pero añade nuevos endpoints para alacenar y generar Tokens que permitan el acceso al
+	backend de laravel
+	utiliza breeze pero tambien puede ser utilizado junto a Fortify
+
+Jetstream: Es una interfaz completa ideal para ser utilizada como el inicio de una app de laravel
+	Diseñada en tailwind y puede ser usada junto con liwire o inertia
+	Sanctum incluye funciones de registro, sesiones, tokens, verificaion de mail, recuperar pass y 2FA
+
+Para instalar Breeze en consola dentro de nuestro proyecto ejecutaremos el sig comando
+	composer require laravel/breeze --dev
+Esto instala la instacia de la libreria
+Para instalar los Controladores y vistas de Breeze ahora ejecutamos el sig comando
+	php artisan breeze:install
+Antes de instalar nos preguntara para que entorno lo usaremos
+	0-blade
+	1-react
+	2-vue
+	3-api
+Seleccionamos la opcion que necesitemos
+Despues se deben de instalar las dependecias usando el sig comando
+	npm install
+
+Posteriormente solo ejecutamos el comando de 
+	npm run dev
+para que ejecute los assets de tailwind
+
+Los templates para editarlos se encuentran en la carpeta resources/views/auth y en layouts
+

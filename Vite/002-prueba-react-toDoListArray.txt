@@ -1,0 +1,297 @@
+Prueba de react todolist con arrays
+El fin de este ejercicio es crear un ToDoList (Lista de Tareas) con arrays usando React
+
+CREAR EL PROYECTO REACT USANDO VITE
+En la carpeta donde realizaremos nuestro proyecto ejecutamos el siguiente código
+	npm init vite@latest
+Esto ejecuta la ultima versión de vite
+Despues de haber ejecutado este comando en nuestra consola se nos guiara como deseamos configurar nuestro proyecto por medio de las sig preguntas:
+ ___________________________________
+| PREGUNTA 			      | RESPUESTA   |
+|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
+| create-vite@4.4.1  	|	y           |
+| Project name:       | nomApp      |
+| Select a framework  | React       |  //en este caso
+| Lenguaje            | JavaScript  |  //en este caso
+ ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+
+Despues de estas configuraciones debemos movernos al directorio de nuestro proyecto
+	cd nomApp
+
+Posteriormente ejecutamos el sig comando
+	npm install
+Esto instala dependecias de configuracion de nuestro proyecto
+
+Y para ejecutar el servidor lo hacemos con el sig comando
+	npm run dev
+Esto nos da una url donde podremos visualizar nuestro proyecto
+
+Lo siguiente es limpiar nuestro entorno de trabajo ya que la instalacion de react por medio de vite
+genera archivos que no usaremos
+Por tanto eliminaremos los siguientes archivos
+app.css
+y la carpeta assets
+
+y depuramos el main de la sig manera
+
+////////////////////////////////////////////////////////////
+//////////////// ARCHIVO src/main.jsx //////////////////////
+////////////////////////////////////////////////////////////
+
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    {/* Aqui se coloca el contenido de la app*/}
+  </React.StrictMode>,
+)
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+Ahora ya podemos enfocarnos en el desarrollo
+
+INSTALAR Y CONFIGURAR TAILWIND PARA SU USO EN REACT
+
+Dentro de la carpeta de nuestro proyecto de react abrimos una consola y escribimos el sig comando
+	npm install -D tailwindcss postcss autoprefixer
+
+- Despues ejecutamos el sig comando
+	npx tailwindcss init -p
+
+Esto crea dos archivos postcss.config.js y tailwind.config.js
+
+abrimos el tailwind.config.js y dentro de los corchetes de content escribimos lo sig
+	'./index.html',
+	'./src/**/*.{js,jsx}'
+por tanto el arcchivo deberia quedar de la sig manera
+
+////////////////////////////////////////////////////////////
+//////////////// ARCHIVO tailwind.config.jsx ///////////////
+////////////////////////////////////////////////////////////
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html',
+	  './src/**/*.{js,jsx}'
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+en la carpeta src abrimos el archivo index.css
+borramos todo el codigo o lo comentamos
+y despues escribimos lo sig.
+
+////////////////////////////////////////////////////////////
+//////////////// ARCHIVO src/index.css /////////////////////
+////////////////////////////////////////////////////////////
+
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+Con esto tenemos todo listo para usar tailwind en nuestro proyecto
+
+Dentro de la carpeta src creamos una carpeta con el nombre de components
+en esta carpeta crearemos los componentes necesarios para nuestra aplicacion
+
+Creamos un archivo con el nombre ToDo.jsx
+Este archivo es practicamente nuestra aplicacion y en el que trabajemos casi en su totalidad
+
+////////////////////////////////////////////////////////////
+//////////////// ARCHIVO components/ToDo.jsx ///////////////
+////////////////////////////////////////////////////////////
+
+import { useState } from 'react';		//importamos el hook useState
+
+//se crean funciones usando el hook useState para crear estados de los elementos que usaremos
+	//manejara el estado de msg de alerta si se manda el imput vacio
+	const [alert, setAlert] = useState('');				
+
+	//manejara el estado del array donde se agregaran las tareas
+	const [tasks, setTasks] = useState([]);
+
+	//manejara el estado del input text
+	const [taskTxt, setTaskTxt] = useState('');
+
+//Creamos las funciones que manejaran los datos y el flujo de la info
+
+	//funcion que obtiene el valor del input text
+	const handleChange = (e) => {
+        setTaskTxt(e.target.value);
+  }
+
+  //funcion que agrega la tarea al array
+  const handleSubmit = (e)=>{
+        e.preventDefault();              	//se cancela el evento por default del form
+        if(taskTxt != ''){							 	//se comprueba si el valor del input text esta vacio o no
+            setTasks([...tasks, taskTxt]);	//se usa el hook y se agrega la tarea al array 
+            setTaskTxt('');									//se limpia el valor del input text
+            setAlert('');                   //se limpia el msg si es que este ya se habia mostrado
+        }
+        else{
+            setAlert('Task is required');   //se manda el msg si el input text va vacio
+            return;                         //se termina la ejecucion del codigo
+            
+        }
+  }
+
+  //funcion para borrar tarea
+  const handleDelete = (index) => {         //se recibe el indice del array del array de tareas
+        const newToDo = [...tasks];         //se crea una copia del array para su manipulacion
+        newToDo.splice(index, 1);           //se borra el elemento del array seleccionado
+        setTasks(newToDo);									//se coloca en el hook la copia del array
+  }
+
+//se crea el render de la aplicacion
+return(
+        <>
+            <div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg mx-auto my-16">
+                {alert && <p className="mb-5 px-5 text-gray-200 bg-red-600" >{alert}</p> }
+                <form autoComplete="off" onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                        <h1 className="text-red-700">
+                            Todo List
+                        </h1>
+                        <div className="flex mt-4">
+                            <input type="text" name="txtTask" value={taskTxt} onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-black" placeholder="Name Task" />
+                            <button className="text-blue-700 flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-blue-500 hover:bg-teal">
+                                add
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div>
+                    {tasks.length != 0 ? tasks.map((task, index) => (
+                        <div className="flex mb-4 items-center">
+                            <p key={index} className="w-full text-gray-700">
+                                {task}
+                                <button onClick={() => handleDelete(index)} className="text-red-700 flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:bg-red-700 hover:text-white hover:bg-red">Remove</button>
+                            </p>
+                        </div>
+                    )): <NoTasks />}
+                    //<NoTasks /> es otro componente que debemos crear   
+                </div>
+            </div>
+        </>
+    )
+
+//se exporta el componente para usarlo
+export default ToDo;
+
+
+////////////////////////////////////////////////////////////
+////// ARCHIVO TERMINADO components/ToDo.jsx ///////////////
+////////////////////////////////////////////////////////////
+import { useState } from 'react';
+import NoTasks from './NoTasks';
+
+const ToDo = () => {
+    const [alert, setAlert] = useState('');
+    const [tasks, setTasks] = useState([]);
+    const [taskTxt, setTaskTxt] = useState('');
+
+    const handleChange = (e) => {
+        setTaskTxt(e.target.value);
+    }
+
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        if(taskTxt != ''){
+            setTasks([...tasks, taskTxt]);
+            console.log(taskTxt);
+            setTaskTxt('');
+            setAlert('');
+        }
+        else{
+            setAlert('Task is required');
+            return;
+            
+        }
+    }
+
+    const handleDelete = (index) => {
+        const newToDo = [...tasks];
+        newToDo.splice(index, 1);
+        setTasks(newToDo);
+    }
+
+    return(
+        <>
+            <div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg mx-auto my-16">
+                {alert && <p className="mb-5 px-5 text-gray-200 bg-red-600" >{alert}</p> }
+                <form autoComplete="off" onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                        <h1 className="text-red-700">
+                            Todo List
+                        </h1>
+                        <div className="flex mt-4">
+                            <input type="text" name="txtTask" value={taskTxt} onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-black" placeholder="Name Task" />
+                            <button className="text-blue-700 flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-blue-500 hover:bg-teal">
+                                add
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div>
+                    {tasks.length != 0 ? tasks.map((task, index) => (
+                        <div className="flex mb-4 items-center">
+                            <p key={index} className="w-full text-gray-700">
+                                {task}
+                                <button onClick={() => handleDelete(index)} className="text-red-700 flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:bg-red-700 hover:text-white hover:bg-red">Remove</button>
+                            </p>
+                        </div>
+                    )): <NoTasks />}      
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default ToDo;
+
+////////////////////////////////////////////////////////////
+//////////////ARCHIVO components/NoTasks.jsx ///////////////
+////////////////////////////////////////////////////////////
+
+const NoTasks = () => {
+    return(
+        <>
+            <div className="flex mb-4 items-center text-gray-700">
+                Not there tasks
+            </div>
+        </>
+    )
+}
+
+export default NoTasks;
+
+////////////////////////////////////////////////////////////
+//////////////ARCHIVO app.jsx///////////////////////////////
+////////////////////////////////////////////////////////////
+
+import ToDo from "./components/ToDo";
+
+function App(){
+    return(
+        <>
+            <ToDo />
+        </>
+    )
+}
+
+export default App;

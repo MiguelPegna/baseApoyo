@@ -1,0 +1,72 @@
+CONTROLADORES EN LARAVEL
+Los controladores de  laravel se generan en la carpeta
+app/Http/Controllers
+Una de las grandes ventajas que tiene laravel es que nos facilita en demasia la creacion de
+nuestra app ya que hay dos formas de crear los controladores de nuestra aplicacion 
+una es la clasica de hacerlo de manera manual desde cero y otra es mediante un comando 
+de laravel en la terminal que nos creara el archivo ya con la erstructura necesaria para 
+nuestro controlador para ello usaremos el sig comando
+
+	php artisian make
+
+Este comando sera muy usado durante el transcurso de la creacion de nuestra aplicacion
+desde los controladores, vistas, modelos y migraciones
+
+Para hacer crear un controlador usamos el comando php artisian make de la sig manera.
+
+	php artisian make:controller HomeController  //Se añade Controller despues del nombre por convencion
+
+Se habia mostrado como se generan las rutas desde el archivo web pero las podemos invocar 
+desde el controlador y lo cual resulta mas optimo, para hacerlo lo haremos 
+de la siguiente manera y esto de paso hara nuestro archivo web.php mas simple
+
+Primero creamos nuestro controlador usaremos el ejemplo del controlador Home
+Creamos el controlador  
+	php artisian make:controller HomeController
+
+Ya creado el controlador en al archivo HomeController crearemos el sig metodo dentro de la clase
+
+    public function __invoke(){   //Se usa _invoque cuando solo se requiere que el controlador administre una unica ruta
+        return view('welcome');
+    }
+
+Ahora en el archivo web.php mandamos a llamar el uso de nuestro controlador de la sig manera
+	use App\Http\Controllers\HomeController;
+
+Despues creamos la ruta usando nuestro metodo de la sig manera
+Route::get('/', HomeController::class);
+
+HACER QUE NUESTRO CONTROLADOR GESTIONE MAS RUTAS
+Para este ejemplo crearemos el controlador cursos
+	php artisian make:controler CursoController
+Ya creado el controlador en el archivo CursoController crearemos los sig metodo 
+uno para cada ruta dentro de la clase
+
+    public function index(){   //se puede usar el nombre del metodo que tu quieras pero por convencion usaremos los que se utilizan
+        return view('cursos.index');   //index es el metodo encargado de mostrar la pag principal del controlador
+    }
+
+    public function create(){   //Create Muestra una subcategoria del controllador
+        return view('cursos.subcategoria');   
+    }
+
+    public function show($id){   //Show Elemento en particular
+        return view('cursos.perfil', 'varNomGet=> $id');   //se hace de esta manera para poder enviar el valor de la variable a nuestra vista
+    }
+
+Volvemos al archivo web.php mandamos a llamar el uso de nuestro controlador de la sig manera
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CursoController;  //Hemos agregado el uso del nuevo controlador
+Despues creamos las rutas usando nuestros metodos de la sig manera
+Route::get('cursos', [CursoController::class, 'index']);  //por default se carga el metodo __invok al no existir en nuestro Controlador de curso mencionanmos el metodo principal de acuerdo al nombre que le hayamos dado
+Route::get('cursos/create', [CursoController::class, 'create']);
+Route::get('cursos/{curso}', [CursoController::class, 'show']);
+
+GRUPOS DE RUTAS
+Para este ejemplo usaremos el ejemplo anterior del controlador de cursos.
+Para crear nuestro grupo de rutas hacemos los sig.
+Route::controller(CursoController::class)->group(function(){
+	Route::get('cursos', 'index');
+	Route::get('cursos/create', 'create');
+	Route::get('cursos/{curso}', 'show');
+});

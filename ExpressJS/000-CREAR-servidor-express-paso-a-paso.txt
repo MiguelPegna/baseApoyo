@@ -1,0 +1,105 @@
+CREAR servidor express paso a paso
+
+Dentro de la carpeta que contendra nuestro proyecto de node
+PASO 1
+ejecutamos en consola el siguiente comando
+npm init --y
+Este comando creara un archivo llamado package.json con esto estamos indicando que vamos a trabajar con nodeJs y hacer uso de npm
+Con esto solo hemos empezado a preparar nuestro entorno para trabajar
+
+PASO 2
+Intalacion de express
+ejecutamos en consola el siguiente comando
+npm i express
+Con este comado ejecutamos el primer comando de instalacion de dependecia en nuestro proyecto esto crea una carpeta con el nombre de node_modules aqui es donde se instalaran los paquetes de las dependencias que usemos en nuestro proyecto
+
+PASO 3
+Creamos una carpeta con el nombre de src
+Esta carpeta sera la que contendra todo el desarrollo de nuestro proyecto
+
+PASO 4
+Crearemos la estructura de carpetas de nuestra aplicacion dentro de la carpeta src
+crear las sig carpetas
+mkdir config controllers helpers models public request routes storage views
+
+PASO 5
+Instalaremos las siguientes dependencias
+npm i dotenv - Necesario para crear variables de entorno
+npm i -D nodemon - para ejecutar cambios automaticamente al guardar
+
+PASO 6
+Crear archivo .env para gestionar variables de entorno
+Este archivo lo creamos en el mismo lugar donde se encuentra la carpeta src
+ejemplo de variable de entorno
+PORT=2174
+
+PASO 7
+Para hacer uso de nodemon necesitamos abrir nuestro archivo package.json y en la parte de scripts agregamos los sig
+"start": "node src/index.js",
+"dev": "nodemon src/index.js",
+
+al hacer esto ahora podremos ejecutar nuestro server con el sig comando
+npm run dev
+
+PASO 8
+Crear los siguientes archivos
+touch index.js server.js
+
+PASO 9
+Crear servidor
+Usaremos el archivo server.js
+Hay dos formas de generar nuestro servidor mediante el uso de CommonJS y ESModules
+Mediante ComonJS
+
+const express = require('express');	//se genera una constante con el nombre de express utilizando ya la dependencia de expressJS
+require('dotenv').config();    //se instancia nuestro archivo de variables globales
+
+const app = express();	//instanciamos expressJs en una constante llamada app puede tener cualquier nombre pero es muy
+					comun hallarla definida con este nombre
+
+const port = process.env.PORT || 3000	//asignamos el puerto donde estaremos trabajando nuestra app el 3000 es usado como convencion
+app.set('port', port);  
+
+module.exports = app;   //exportar app para poder usarla en otros archivos se usara para llamarlo en el index.js
+
+
+Mediante ESModules
+NOTA: Para usar EsModules sera necesario editar el archivo package.json y agregar la siguiente linea debajo de description
+"type": "module",
+
+SERVER.JS
+import express from 'express';	//se genera importacion de express utilizando ya la dependencia de expressJS
+import "dotenv/config"			//se instancia nuestro archivo de variables globales
+
+const app = express();		//instanciamos expressJs en una constante llamada app puede tener cualquier nombre pero es muy comun hallarla definida con este nombre		
+const port = process.env.PORT || 3000	//asignamos el puerto donde estaremos trabajando nuestra app el 3000 es usado como convencion
+app.set('port', port);  
+
+export default = app;   //exportar app para poder usarla en otros archivos se usara para llamarlo en el index.js
+
+
+PASO 10
+Editamos el index.js para poder hacer uso de nuestro servidor
+
+Mediante commonJS
+const app = require('./server');
+
+//server escuchando
+app.listen(app.get('port'), ()=>{
+    console.log('Servidor activo en puerto: http://localhost:',app.get('port'), 'biatch', );
+});
+
+
+ESModule
+import app from './server.js';		//se incluye el modulo app que generamos en el server.js
+
+//Inicializamos el servidor
+app.listen(app.get('port'), ()=>{
+    console.log('Servidor activo en puerto: http://localhost:',app.get('port'), 'biatch', );
+});
+
+PASO 11
+Ya finalmente podemos inicializar nuestro servidor ejecutando en consola el comando
+npm run dev
+
+Con esto nuestro servidor estara activo y podremos enfocarnos en nuestro desarrollo e instalar las diferentes dependencias que requiramos

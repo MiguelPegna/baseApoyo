@@ -1,0 +1,28 @@
+REINICIAR SERVIDOR DE FORMA AUTOMATICA
+
+Algo que puede ser molesto y quitar tiempo en el desarrollo de nuestra aplicacion es que expressJS no actualiza los cambios que 
+hagamos solo con actualizar la pagina con f5 sino que para ver los cambios que hagamos en nuestro desarrollo es necesario
+reiniciar nuestro servidor usando ctrl+c(esto apaga el servidor) y lo tenemos que iniciar de nuevo con el comando node src/index.js
+
+Podemos evitar esto y lograr que cada vez que nuestro proyecto tenga un cambio el servidor se actualize de manera automatica sin
+necesidad de que nosotros lo hagamos de manero manual para ello hay varias formas
+
+POR DEPENDENCIA
+Instalando nodemon por el sig comando
+	npm i nodemon
+agregar lo sig en el archivo package.json
+en la parte de:
+"scripts":{
+	"start":"node src/index.js",
+	"dev": "nodemon src/index.js",		Este dev es el alias que usaremos ahora para correr el serv
+}
+
+Por tanto ejecutaremos el servidor ahora con el sig comando
+	npm run dev
+
+NATIVAMENTE
+Instalar node 18.11 o superior para usar esta funcion en lugar de nodemon
+	Escribir en consola el sig comando
+		node --watch src/index.js
+
+Asi de esta manera podemos enfocarnos solo en el desarrollo y no perder tiempo en reiniciar el servidor
