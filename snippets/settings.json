@@ -1,0 +1,114 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontSize": 16,
+    "terminal.integrated.fontFamily": "Fira Code",
+    "workbench.iconTheme": "material-icon-theme",
+    "terminal.integrated.gpuAcceleration": "off",
+    "editor.tokenColorCustomizations": {
+        "comments": "#625a6b",//"#6a9955",
+        "variables": "#28ab65",//"#358cd6",
+        "strings": "#ce723b",
+        "numbers": "#FAD802",
+        "textMateRules": [
+            //scopes
+            {
+                "scope":[//numerosJS
+                    "constant.numeric.decimal.js",
+                    "constant.numeric.decimal.php"
+                ],
+                "settings": {
+                    "foreground": "#4ecbfd"
+                }
+            },
+            {
+                "scope":[ 
+                    "keyword.control.conditional.js", //ifjs
+                    "keyword.control.loop.js", //forjs
+                    "keyword.control.switch.js", //SwitchJs
+                    "keyword.control.flow.js", //return
+                    "storage.type.js",          //let & const
+                    "keyword.control.if.php", //ifPhp
+                    "keyword.control.else.php", //else
+                    "keyword.control.for.php", //forPhp
+                    "keyword.control.foreach.php", //foreachPhp
+                    "keyword.operator.logical.php", //logical as, and not Php
+                    "keyword.control.while.php", //whilePhp
+                    "keyword.control.do.php", //doPhp
+                    "keyword.control.switch.php", //SwitchPhp
+                    "keyword.control.case.php", //casePhp
+                    "keyword.control.break.php", //breakPhp
+                    "keyword.control.default.php", //defaultPhp
+                    "keyword.control.return.php", //returnPhp                   
+                    "support.function.construct.output.php", //echoPhp
+                    "storage.type.function.php"  //functionPhp
+                ],
+                "settings": {
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope":[ 
+                    "punctuation.terminator.statement.js", //puntoYcomaJs
+                    "punctuation.terminator.expression.php" //puntoYcomaPhp
+                ],
+                "settings": {
+                    "foreground": "#FA271A"
+                }
+            },
+            {
+                "scope":[ 
+                    "meta.brace.round.js", //parentesisJs
+                    "punctuation.definition.begin.bracket.round.php", //parentesisPhp
+                    "punctuation.definition.end.bracket.round.php"    //parentesisPhp
+                ],
+                "settings": {
+                    "foreground": "#f5d108",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope":[ 
+                    "punctuation.definition.parameters.begin.js", //parentesisJsFunc
+                    "punctuation.definition.parameters.end.js", //parentesisJsFunc
+                    "punctuation.definition.parameters.begin.bracket.round.php", //parentesisPhpFunc
+                    "punctuation.definition.parameters.end.bracket.round.php"    //parentesisPhpFunc
+                ],
+                "settings": {
+                    "foreground": "#f1fa8c",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope":[ 
+                    "punctuation.definition.block.js", //llavesJs
+                    "punctuation.definition.begin.bracket.curly.php",  //llavePhp
+                    "punctuation.definition.end.bracket.curly.php"     //llavePhp
+                ],
+                "settings": {
+                    "foreground": "#345ee7",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope":[ 
+                    "meta.brace.square.js", //CorcheteJs
+                    "punctuation.section.array.begin.php", //CorchetePhp
+                    "punctuation.section.array.end.php" //CorchetePhp
+                ],
+                "settings": {
+                    "fontStyle": "bold"
+                }
+            }
+        ]
+    },
+    "tabnine.experimentalAutoImports": true,
+    "workbench.colorTheme": "SynthWave '84",
+    "workbench.settings.useSplitJSON": true,
+    "vscode-pets.petType": "dog",
+    "vscode-pets.petColor": "gray",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "workbench.startupEditor": "none"
+    
+}
