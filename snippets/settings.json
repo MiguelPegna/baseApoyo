@@ -1,7 +1,7 @@
 {
     "security.workspace.trust.untrustedFiles": "open",
     "editor.fontLigatures": true,
-    "editor.fontFamily": "Fira Code",
+    "editor.fontFamily": "'Fira Code', menlo",
     "editor.fontSize": 16,
     "terminal.integrated.fontFamily": "Fira Code",
     "workbench.iconTheme": "material-icon-theme",
@@ -106,9 +106,18 @@
     "tabnine.experimentalAutoImports": true,
     "workbench.colorTheme": "SynthWave '84",
     "workbench.settings.useSplitJSON": true,
-    "vscode-pets.petType": "dog",
-    "vscode-pets.petColor": "gray",
     "diffEditor.ignoreTrimWhitespace": false,
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "editor.linkedEditing": true,
+    "editor.cursorBlinking": "expand",
+    "editor.guides.bracketPairs": true,
+    "breadcrumbs.enabled": false,
+    "editor.stickyScroll.enabled": true,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "workbench.editorAssociations": {
+        "*.php": "default"
+    },
+    "git.enableSmartCommit": true,
+    "rapidapi.terminalLink.enabled": false
     
 }
