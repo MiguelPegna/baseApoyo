@@ -84,8 +84,8 @@ JOINS : Los Join son funciones que nos permiten unir tablas para consultar su in
     INNER JOIN o JOIN : Palabra reservada para el uso de join
     teams  Es el nombre de la tabla con la queremos hacer union 
     ON  : Palabra reservada para indicar donde o conque columna haremos la union
-    player_team : nombre del campo de la tabla que servira como referencia para hacer la union
-    team_id : Es la columna de la tabla con la que vamos hacer union y servira para hacer union con el campo de la tabla de referencia
+    player_team : nombre del campo de la tabla players que servira como referencia para hacer la union
+    team_id : Es la columna de la tabla teams con la que vamos hacer union y servira para hacer union con el campo de la tabla de referencia
  
  En este caso usaremos dos tablas una llamada players y otra llamada teams con la sig estructura
  players
@@ -133,7 +133,10 @@ FROM productos
 LEFT JOIN ventas on producto_id = ventas_id   /*LEFT JOIN indica que la tabla principal o de relevancia sera Productos*/
 RIGHT JOIN ventas on producto_id = ventas_id  /*RIGHT JOIN indica que la tabla principal o de relevancia sera ventas*/
 GROUP BY producto_id
-         
+/*
+
+NOTA: Para hacer uniones entre tablas se deben realcionar 2 campos de tablas diferentes, 
+    pero de tipos iguales y longitudes iguales y ambos deben ser indices
 
 SUBCONSULTAS
 Las subconsultas son consultas que se pueden agregar o anidar dentro de un SELECT un FROM o un WHERE
@@ -167,10 +170,3 @@ FROM
     WHERE
         estado = 1) T
 GROUP BY T.codeGerente;
-
-
-
-
-
-
-
