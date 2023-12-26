@@ -6,14 +6,14 @@ En la carpeta donde realizaremos nuestro proyecto ejecutamos el siguiente códig
 	npm init vite@latest
 Esto ejecuta la ultima versión de vite
 Despues de haber ejecutado este comando en nuestra consola se nos guiara como deseamos configurar nuestro proyecto por medio de las sig preguntas:
- ___________________________________
++---------------------+-------------+
 | PREGUNTA 			      | RESPUESTA   |
-|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
++---------------------+-------------+
 | create-vite@4.4.1  	|	y           |
 | Project name:       | nomApp      |
 | Select a framework  | React       |  //en este caso
 | Lenguaje            | JavaScript  |  //en este caso
- ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
++---------------------+-------------+
 
 Despues de estas configuraciones debemos movernos al directorio de nuestro proyecto
 	cd nomApp
