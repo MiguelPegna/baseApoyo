@@ -1,0 +1,27 @@
+Expresiones Regulares
+^ : Sirve para indicar con que caracter debe empezar el string
+/^b/  :  se indica que la cadena debe de empezar con la letra b
+
+$ : Sirve para indicar con que caracter debe de terminar la cadena
+/r$/  : se indica que la cadena debe terminar con la letra r
+
+ENcontrar una palabra en la cadena validadores
+Se usa \b para poder encontrar una palabra o caracter en la cadena ejem
+/Roma\b/: Esto pide que la cadena tenga la palabra Roma
+
+Cuantificadores
+Se representa con un * verifica que un caracter venga una vez o infinitas veces
+/^a*e*$/ : Con el asterisco se especifica que puede venir uno, ninguno o muchos
+/^a+/   : minimo debe de existir una letra a
+/e?/ : especifica que una letra no puede existir o si pero solo una vez
+/^gato5{1,2}?$ : especifica que el numero 5 debe de existir por lo menos 1 vez y como maximo dos veces
+
+. : Especifica que cualquier cosa se puede escribir
+
+\d : especifica que debe de haber un digito
+\D : especifica que no debe de venir ningun numero
+\w : especifica una cadena alfanumerica
+\s : especifica un espacio
+| : sirve para hacer un OR  (\w|\d)
+[a-z]+$ : especifica que haya letras de la a - z en minusculas 
+(=?) : Aserción anticipada
