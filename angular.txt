@@ -1,0 +1,11 @@
+Instalar cli Angular
+nmp i -g @angular/cli@16.2.10
+Desinstalar cli
+npm uninstall -g @angular/cli
+
+Crear app en Angular
+ng Palabra reservada para angular
+ng new NomApp
+
+Despues se preguntara si se desa usar el rooting de angular
+A continuacion se nos pregunta la forma en que se usan los estilos por defecto generalmente se usa CSS

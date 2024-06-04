@@ -1,0 +1,13 @@
+//obtain data for rthe select choose league
+async function getLeagues(){
+    const urlAPi = base_url + '/API/leagues';
+    try{
+        const response = await fetch(urlAPi);
+        const leagues = await response.json();
+        combo(leagues, 'ComboAway');
+        combo(leagues, 'ComboHome');
+    }catch(e){
+        console.log(e);
+    }
+}
+//fill the selects
